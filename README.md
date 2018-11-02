@@ -1,24 +1,3 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+TAP provides a more efficient and effective way of creating a platform where Job Seekers can upload their CV's and Qualifications for access by the all departments that are looking for staff. Departments can also upload job opportunities on the same platform for Job Seekers to access and apply for it.
