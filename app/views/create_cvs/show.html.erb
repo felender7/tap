@@ -1,0 +1,38 @@
+<div class="page-header">
+  <%= link_to create_cvs_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    All Create_cvs
+  <% end %>
+  <%= link_to edit_create_cv_path(@create_cv), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show create_cv</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Id number:</dt>
+  <dd><%= @create_cv.id_number %></dd>
+
+  <dt>Passport number:</dt>
+  <dd><%= @create_cv.passport_number %></dd>
+
+  <dt>Identification type:</dt>
+  <dd><%= @create_cv.identification_type %></dd>
+
+  <dt>Gender:</dt>
+  <dd><%= @create_cv.gender %></dd>
+
+  <dt>Date of birth:</dt>
+  <dd><%= @create_cv.date_of_birth %></dd>
+
+  <dt>Place of birth:</dt>
+  <dd><%= @create_cv.place_of_birth %></dd>
+
+  <dt>Disability:</dt>
+  <dd><%= @create_cv.disability %></dd>
+
+  <dt>Education type:</dt>
+  <dd><%= @create_cv.education_type %></dd>
+
+</dl>

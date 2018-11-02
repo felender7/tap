@@ -1,0 +1,69 @@
+<%= form_with(model: create_cv, local: true) do |form| %>
+  <% if create_cv.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(create_cv.errors.count, "error") %> prohibited this create_cv from being saved:</h2>
+
+      <ul>
+      <% create_cv.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :id_number %>
+    <%= form.text_field :id_number, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :passport_number %>
+    <%= form.text_field :passport_number, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :identification_type %>
+    <%= form.text_field :identification_type, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :gender %>
+    <%= form.text_field :gender, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :date_of_birth %>
+    <%= form.date_select :date_of_birth, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :place_of_birth %>
+    <%= form.text_field :place_of_birth, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :disability %>
+    <%= form.text_field :disability, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :education_type %>
+    <%= form.text_field :education_type, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <% if create_cv.persisted? %>
+      <div class="float-right">
+        <%= link_to 'Destroy', create_cv, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+
+    <%= form.submit class: 'btn btn-primary' %>
+
+    <% if create_cv.persisted? %>
+      <%= link_to "Cancel", create_cv, class: "btn btn-link" %>
+    <% else %>
+      <%= link_to "Cancel", create_cvs_path, class: "btn btn-link" %>
+    <% end %>
+  </div>
+<% end %>

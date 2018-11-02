@@ -1,6 +1,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resources :create_cvs
   namespace :admin do
       resources :users
       resources :announcements

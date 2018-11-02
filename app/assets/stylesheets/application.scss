@@ -1,6 +1,14 @@
+//colors
+$white-color                :#fff !important;
+//colors end
+
+//Customize bootstrap
+//$btn-success-color          :#fff !important;
+//$btn-success-bg :$white-color;
 // $navbar-default-bg: #312312;
 // $light-orange: #ff8c00;
 // $navbar-default-color: $light-orange;
+
 
 @import "font-awesome-sprockets";
 @import "font-awesome";
@@ -8,6 +16,7 @@
 @import "sticky-footer";
 @import "announcements";
 @import "carousel";
+
 
 // Fixes bootstrap nav-brand container overlap
 @include media-breakpoint-down(xs) {
@@ -63,4 +72,11 @@ body > .alert {
   font-weight: bold;
   font-size: 25px;
   color: #009432;
+}
+
+//buttons
+.btn-success {
+    color: $white-color;
+    background-color: #28a745;
+    border-color: #28a745;
 }
