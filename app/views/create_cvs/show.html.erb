@@ -1,33 +1,91 @@
-<div class="page-header">
-  <%= link_to create_cvs_path, class: 'btn btn-default' do %>
-    <span class="glyphicon glyphicon-list-alt"></span>
-    All Create_cvs
-  <% end %>
-  <%= link_to edit_create_cv_path(@create_cv), class: 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-pencil"></span>
-    Edit
-  <% end %>
-  <h1>Show create_cv</h1>
+
+<div class="container-fluid">
+  <div class="shadow-none p-3 mb-5 bg-light roundedk">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h3>CV Summary</h3>
+        </div>
+        <div class="col-md-4">
+            <p class="float-right"> <a href="/"> <i class="fa fa-window-close" data-toggle="tooltip" title="Close"> </i></a></p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<div class="shadow-sm p-3 mb-5 bg-white rounded">
+<div class="row">
+  <div class="col-lg-2">Profile</div>
+  <div class="col-lg-6">
+    <div class="table-responsive-sm">
+        <table class="table table-sm">
+          <tbody>
+            <tr class="d-flex"></tr>
+         </tbody>
+            <tr>
+              <td><strong>Full Name:</strong></td>
+              <td><%=current_user.name%></td>
+            </tr>
+
+            <tr>
+              <td><strong>
+                <strong >
+                   <%if @create_cv.identification_type == 'ID'%>
+                       South Africa Legal ID:</strong> <br>
+                   <%else%>
+                   Foreign Legal ID:</strong>
+                   <%end%>
+              </strong></td>
+              <td>
+                <%= @create_cv.identification_type %> -
+                <%= @create_cv.id_passport %>
+              </td>
+            </tr>
+
+            <tr>
+              <td><strong>Date of Birth:</strong></td>
+              <td><%= @create_cv.date_of_birth %></td>
+            </tr>
+
+         <tr>
+           <td><strong>Gender:</strong></td>
+           <td><%= @create_cv.gender %></td>
+         </tr>
+
+         <tr>
+           <td><strong>Ethnicity:</strong></td>
+           <td><%= @create_cv.ethnicity %></td>
+         </tr>
+
+         <tr>
+           <td><strong>Place of Birth:</strong></td>
+           <td><%= @create_cv.place_of_birth %></td>
+         </tr>
+
+         <tr>
+           <td><strong>Disability:</strong></td>
+           <td><%= @create_cv.disability %></td>
+         </tr>
+
+         <tr>
+           <td><strong>Education:</strong></td>
+           <td><%= @create_cv.education_type %></td>
+         </tr>
+
+        </table>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <%=render'shared/tracking'%>
+  </div>
 </div>
 
-<dl class="dl-horizontal">
 
-  <dt>Identification type:</dt>
-  <dd><%= @create_cv.identification_type %></dd>
-  <dd><%= @create_cv.id_passport %></dd>
-  <dt>Gender:</dt>
-  <dd><%= @create_cv.gender %></dd>
-
-  <dt>Date of birth:</dt>
-  <dd><%= @create_cv.date_of_birth %></dd>
-
-  <dt>Place of birth:</dt>
-  <dd><%= @create_cv.place_of_birth %></dd>
-
-  <dt>Disability:</dt>
-  <dd><%= @create_cv.disability %></dd>
-
-  <dt>Education type:</dt>
-  <dd><%= @create_cv.education_type %></dd>
-
-</dl>
+    <hr>
+    <%= link_to edit_create_cv_path(@create_cv) do %>
+       <i class="fas fa-edit"></i>
+    <%end%> |
+       <a href="#" class="btn btn-warning">Next - <i class="fas fa-cloud-upload-alt"></i>
+ Upload Documents</a>
+  </div>
+</div>

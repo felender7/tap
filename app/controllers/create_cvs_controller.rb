@@ -10,6 +10,7 @@ class CreateCvsController < ApplicationController
   # GET /create_cvs/1
   # GET /create_cvs/1.json
   def show
+
   end
 
   # GET /create_cvs/new
@@ -69,7 +70,7 @@ class CreateCvsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def create_cv_params
-      params.require(:create_cv).permit(:id_passport,:identification_type, :gender, :date_of_birth, :place_of_birth, :disability, :education_type,:slug)
+      params.require(:create_cv).permit(:id_passport,:identification_type,:ethnicity, :gender, :date_of_birth, :place_of_birth, :disability, :education_type,:slug)
     end
 
     def education_type
