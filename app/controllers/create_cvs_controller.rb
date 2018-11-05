@@ -1,6 +1,6 @@
 class CreateCvsController < ApplicationController
   before_action :set_create_cv, only: [:show, :edit, :update, :destroy]
-
+  before_action :education_type
   # GET /create_cvs
   # GET /create_cvs.json
   def index
@@ -69,6 +69,10 @@ class CreateCvsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def create_cv_params
-      params.require(:create_cv).permit(:id_number, :passport_number, :identification_type, :gender, :date_of_birth, :place_of_birth, :disability, :education_type,:slug)
+      params.require(:create_cv).permit(:id_passport,:identification_type, :gender, :date_of_birth, :place_of_birth, :disability, :education_type,:slug)
+    end
+
+    def education_type
+      @qualifications = CreateCv.all
     end
 end

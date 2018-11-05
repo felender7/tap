@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_02_092924) do
+ActiveRecord::Schema.define(version: 2018_11_05_095844) do
 
   create_table "announcements", force: :cascade do |t|
     t.datetime "published_at"
@@ -22,8 +22,6 @@ ActiveRecord::Schema.define(version: 2018_11_02_092924) do
   end
 
   create_table "create_cvs", force: :cascade do |t|
-    t.string "id_number"
-    t.string "passport_number"
     t.string "identification_type"
     t.string "gender"
     t.date "date_of_birth"
@@ -36,6 +34,9 @@ ActiveRecord::Schema.define(version: 2018_11_02_092924) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
+    t.string "id_passport"
+    t.string "ethnicity"
+    t.index ["id_passport"], name: "index_create_cvs_on_id_passport", unique: true
     t.index ["slug"], name: "index_create_cvs_on_slug", unique: true
   end
 

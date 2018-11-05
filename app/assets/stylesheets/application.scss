@@ -19,6 +19,7 @@ $white-color                :#fff !important;
 @import "navscroller";
 
 
+
 // Fixes bootstrap nav-brand container overlap
 @include media-breakpoint-down(xs) {
   .container {
@@ -32,6 +33,10 @@ body > .alert {
   margin-bottom: 0;
 }
 
+// container-fluid should have a top margin
+body > .container-fluid {
+    padding: 40px 15px 0;
+}
 
 /*Profile card 2*/
 .profile-card-2 .card-img-block{
@@ -80,4 +85,8 @@ body > .alert {
     color: $white-color;
     background-color: #28a745;
     border-color: #28a745;
+}
+
+#qualification{
+  visibility: hidden;
 }

@@ -1,4 +1,4 @@
 class CreateCv < ApplicationRecord
   extend FriendlyId
-  friendly_id :id_number, use: :slugged
+  friendly_id :id_passport, use: :slugged
 end

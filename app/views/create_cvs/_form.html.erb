@@ -11,59 +11,86 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= form.label :id_number %>
-    <%= form.text_field :id_number, class: 'form-control' %>
-  </div>
 
-  <div class="form-group">
-    <%= form.label :passport_number %>
-    <%= form.text_field :passport_number, class: 'form-control' %>
-  </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-8 col-md-4">
+      <div class="card shadow-sm p-3 mb-5 bg-white rounded bg-dark">
+        <div class="card-body ">
+          <div class="form-group">
+          <div class="form-group">
+            <%= form.radio_button(:identification_type, "ID", id:'id_number', class:'form-group') %>
+            <%= form.label(:identification_type, "ID") %>
+            <%= form.radio_button(:identification_type, "Passport", id:'id_number', class:'form-group') %>
+            <%= form.label(:identification_type, "Passport") %>
+            <%=form.text_field :id_passport, class:'form-control'%>
+          </div>
+          </div>
+          <div class="form-group">
+            <%= form.label :date_of_birth %>
+            <%= form.date_select :date_of_birth, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <label for="gender">Gender</label>
+            <%= form.select :gender,['Male', 'Female'],{}, class: 'form-control' %>
+          </div>
 
-  <div class="form-group">
-    <%= form.label :identification_type %>
-    <%= form.text_field :identification_type, class: 'form-control' %>
-  </div>
+          <div class="form-group">
+            <label for="ethnicity">Ethnicity</label>
+            <%= form.select :ethnicity,['Asian', 'Asian','Coloured','Indian','White'],{}, class: 'form-control' %>
+          </div>
 
-  <div class="form-group">
-    <%= form.label :gender %>
-    <%= form.text_field :gender, class: 'form-control' %>
-  </div>
 
-  <div class="form-group">
-    <%= form.label :date_of_birth %>
-    <%= form.date_select :date_of_birth, class: 'form-control' %>
-  </div>
+          <div class="form-group">
+            <%= form.label :place_of_birth %>
+            <%= form.text_field :place_of_birth, class: 'form-control' %>
+          </div>
 
-  <div class="form-group">
-    <%= form.label :place_of_birth %>
-    <%= form.text_field :place_of_birth, class: 'form-control' %>
-  </div>
+          <div class="form-group">
+             <label for="disability">Do you have a Disability</label>
+            <%= form.select :disability,['Not disabled', 'Disabled'], {},class: 'form-control' %>
+          </div>
 
-  <div class="form-group">
-    <%= form.label :disability %>
-    <%= form.text_field :disability, class: 'form-control' %>
-  </div>
+          <div class="form-group">
+             <label for="education_type"> Education</label> <br>
+                <%= form.radio_button(:education_type, "Less than high-school", checked:true) %>
+                <%= form.label(:education_type, "Less than high-school") %> <br>
+                <%= form.radio_button(:education_type, "Matric") %>
+                <%= form.label(:education_type, "Matric") %> <br>
+                <%= form.radio_button(:education_type, "Certificate") %>
+                <%= form.label(:education_type, "Certificate") %> <br>
+                <%= form.radio_button(:education_type, "Diploma") %>
+                <%= form.label(:education_type, "Diploma") %> <br>
+                <%= form.radio_button(:education_type, "Degree", id:'#radio_button_quilifications' ) %>
+                <%= form.label(:education_type, "Degree/s") %> <br>
+                <hr>
+                <div id="qualification">
+                    <p>hello</p>
+                </div>
+          </div>
 
-  <div class="form-group">
-    <%= form.label :education_type %>
-    <%= form.text_field :education_type, class: 'form-control' %>
-  </div>
+          <div class="form-group">
+            <% if create_cv.persisted? %>
+              <div class="float-right">
+                <%= link_to 'Destroy', create_cv, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
+              </div>
+            <% end %>
 
-  <div class="form-group">
-    <% if create_cv.persisted? %>
-      <div class="float-right">
-        <%= link_to 'Destroy', create_cv, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
+            <%= form.submit'Save' ,class: 'btn btn-primary' %>
+
+            <% if create_cv.persisted? %>
+              <%= link_to "Cancel", create_cv, class: "btn btn-link" %>
+            <% else %>
+              <%= link_to "Cancel", create_cvs_path, class: "btn btn-link" %>
+            <% end %>
+          </div>
+        <% end %>
+        <div class="card-footer">
+          <a href="#" class="btn btn-warning">Continue -  Upload Documents</a>
+        </div>
+        </div>
+
       </div>
-    <% end %>
-
-    <%= form.submit class: 'btn btn-primary' %>
-
-    <% if create_cv.persisted? %>
-      <%= link_to "Cancel", create_cv, class: "btn btn-link" %>
-    <% else %>
-      <%= link_to "Cancel", create_cvs_path, class: "btn btn-link" %>
-    <% end %>
-  </div>
-<% end %>
+  </div><!-- col end-->
+  </div><!-- row end-->
+</div> <!-- Container end-->
