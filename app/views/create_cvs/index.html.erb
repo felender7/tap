@@ -16,6 +16,7 @@
     <thead>
       <tr>
             <th>Identification type</th>
+            <th>ID/Passport</th>
             <th>Gender</th>
             <th>Date of birth</th>
             <th>Place of birth</th>
@@ -32,6 +33,7 @@
         <%= content_tag :tr, id: dom_id(create_cv), class: dom_class(create_cv) do %>
 
                       <td><%= create_cv.identification_type %></td>
+                      <td><%= create_cv.id_passport %></td>
                       <td><%= create_cv.gender %></td>
                       <td><%= create_cv.date_of_birth %></td>
                       <td><%= create_cv.place_of_birth %></td>

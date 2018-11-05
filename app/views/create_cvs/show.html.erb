@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8">
-          <h3>CV Summary</h3>
+          <h3><i class="far fa-list-alt"></i> CV Summary</h3>
         </div>
         <div class="col-md-4">
             <p class="float-right"> <a href="/"> <i class="fa fa-window-close" data-toggle="tooltip" title="Close"> </i></a></p>
@@ -31,11 +31,15 @@
               <td><strong>
                 <strong >
                    <%if @create_cv.identification_type == 'ID'%>
-                       South Africa Legal ID:</strong> <br>
+                       South Africa Legal ID:</strong>
+                       <small class="text-warning">South African Citizen</small>
                    <%else%>
                    Foreign Legal ID:</strong>
+                   <small class="text-warning">Not South African Citizen</small>
                    <%end%>
               </strong></td>
+
+
               <td>
                 <%= @create_cv.identification_type %> -
                 <%= @create_cv.id_passport %>
@@ -85,7 +89,9 @@
     <%= link_to edit_create_cv_path(@create_cv) do %>
        <i class="fas fa-edit"></i>
     <%end%> |
-       <a href="#" class="btn btn-warning">Next - <i class="fas fa-cloud-upload-alt"></i>
- Upload Documents</a>
+    <%=link_to upload_documents_index_path, class:'btn btn-warning' do %>
+      Next -> <i class="fas fa-cloud-upload-alt"></i>Upload Documents
+    <%end%>
+
   </div>
 </div>
