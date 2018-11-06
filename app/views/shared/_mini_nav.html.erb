@@ -1,14 +1,14 @@
 <%if user_signed_in?%>
 <div class="nav-scroller bg-white box-shadow">
   <nav class="nav nav-underline">
-    <a class="nav-link active" href="#">Dashboard</a>
-
-    <a class="nav-link" href="#" id="content">
-     <i class="fas fa-align-left" id="sidebarCollapse" ></i>
-    </a>
-    <a class="nav-link" href="#"></a>
-    <a class="nav-link" href="#"></a>
-    <a class="nav-link" href="#">Settings</a>
+    <%=link_to root_path, class:"nav-link active" do %>
+    <i class="fas fa-tachometer-alt"></i> Dashboard
+    <%end%>
+    <a class="nav-link" href="#"><i class="fas fa-star-half-alt"></i> My Tap Score</a>
+    <a class="nav-link" href="/documents"><i class="fas fa-folder"></i> My Documents</a>
+    <a class="nav-link" href="#"><i class="fas fa-user"></i> My Jobs</a>
+    <a class="nav-link" href="#"><i class="far fa-meh-rolling-eyes"></i> My Reviews</a>
+    <a class="nav-link" href="#"><i class="fas fa-cog"></i> Settings</a>
   </nav>
 </div>
 <%end%>

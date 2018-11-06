@@ -17,6 +17,7 @@ $white-color                :#fff !important;
 @import "announcements";
 @import "carousel";
 @import "navscroller";
+@import "fullcalendar";
 
 
 
@@ -94,3 +95,7 @@ body > .container-fluid {
 
 .text-ajust{margin-top: 92px;margin-left: 115px;}
 .margin-bottom-20{margin-bottom: 20px;}
+
+.fc-left h2{
+  font-size: 25px;
+}

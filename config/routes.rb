@@ -1,6 +1,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resources :charges
   resources :documents
   get'upload_documents/index'
   resources :create_cvs
