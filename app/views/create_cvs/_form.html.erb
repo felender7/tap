@@ -17,7 +17,6 @@
     <div class="col-lg-8">
       <div class="shadow-sm p-3 mb-5 bg-light">
           <div class="form-group">
-
             <%= form.label(:identification_type, "ID") %>
             <%= form.radio_button(:identification_type, "ID", id:'id_number', class:'form-group') %>
             <%= form.label(:identification_type, "Passport") %>
@@ -26,7 +25,12 @@
           </div>
 
           <div class="form-group">
-            <%= form.label :date_of_birth %>
+            <label for="avatar"> Upload avatar</label>
+            <%= form.file_field :avatar, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :date_of_birth %> <br>
             <%= form.date_select :date_of_birth, class: 'form-control' %>
           </div>
           <div class="form-group">
@@ -62,10 +66,6 @@
                 <%= form.label(:education_type, "Diploma") %> <br>
                 <%= form.radio_button(:education_type, "Degree", id:'#radio_button_quilifications' ) %>
                 <%= form.label(:education_type, "Degree/s") %> <br>
-                <hr>
-                <div id="qualification">
-                    <p>hello</p>
-                </div>
           </div>
 
           <div class="form-group">
@@ -88,5 +88,8 @@
 
       </div>
   </div><!-- col end-->
+  <div class="col-lg-4">
+    <%=image_tag('http://cdn.content.myfuture.com/assets/3ab7026805b2bfd7f473bbf47c29af20cbd985bb.jpg?1526411982', class:'img-fluid')%>
+  </div>
   </div><!-- row end-->
 </div> <!-- Container end-->

@@ -1,0 +1,46 @@
+
+<div class="container-fluid">
+  <div class="shadow-sm p-3 mb-5 bg-light">
+      <div class="row">
+        <div class="col-md-8 text-muted">
+          <h4><i class="far fa-list-alt"></i> Document </h4>
+        </div>
+        <div class="col-md-4">
+          <a href="/" class="float-right text-danger"> <i class="fa fa-window-close" data-toggle="tooltip" title="Close"> </i></a>
+        </div>
+      </div>
+  </div>
+<div class="shadow-sm p-3 mb-5 bg-white">
+<div class="row">
+  <div class="col-lg-8">
+    <%=link_to'View All Documents', documents_path, class:'btn btn-success' %> <br> <br>
+    <div class="table-responsive-sm">
+        <table class="table table-sm">
+          <tbody>
+            <tr class="d-flex"></tr>
+         </tbody>
+            <tr>
+              <td><strong><%= @document.title %></strong></td>
+              <td><%=link_to @document.file, download:'' do %>
+                <i class="text-danger far fa-file-pdf"></i> Download
+               <%end%>
+              </td>
+            </tr>
+        </table>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <%=render'shared/tracking'%>
+  </div>
+</div>
+
+    <hr>
+    <%= link_to edit_document_path(@document) do %>
+       <i class="fas fa-edit"></i>
+    <%end%> |
+    <%=link_to upload_documents_index_path, class:'btn btn-warning btn-sm' do %>
+      Next - <i class="fas fa-cloud-upload-alt"></i>Upload Documents
+    <%end%>
+
+  </div>
+</div>

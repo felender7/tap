@@ -19,9 +19,3 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
-
-
-$("#radio_button_quilifications").click(function(){
-    $('#qualification').fadeIn();
-
-});
