@@ -29,6 +29,11 @@ $white-color                :#fff !important;
   }
 }
 
+@include media-breakpoint-down(sm) {
+  .hide {
+    display: none;
+  }
+}
 
 // Masquerade alert shouldn't have a bottom margin
 body > .alert {

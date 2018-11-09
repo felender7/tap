@@ -20,8 +20,10 @@
           </div>
 
           <div class="form-group">
-            <small class="text-danger">Only pdf file is allowed</small>
-            <%= form.file_field :file, class: 'form-control' %>
+            <%= form.file_field :file, class: 'form-control-file' %>
+            <small id="passwordHelpBlock" class="form-text text-danger">
+              Only Pdf files are allowed.
+            </small>
           </div>
 
           <div class="form-group">

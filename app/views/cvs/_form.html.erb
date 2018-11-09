@@ -1,0 +1,34 @@
+<%= form_with(model: cv, local: true) do |form| %>
+  <% if cv.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(cv.errors.count, "error") %> prohibited this cv from being saved:</h2>
+
+      <ul>
+      <% cv.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :identification_type %>
+    <%= form.text_field :identification_type, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <% if cv.persisted? %>
+      <div class="float-right">
+        <%= link_to 'Destroy', cv, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+
+    <%= form.submit class: 'btn btn-primary' %>
+
+    <% if cv.persisted? %>
+      <%= link_to "Cancel", cv, class: "btn btn-link" %>
+    <% else %>
+      <%= link_to "Cancel", cvs_path, class: "btn btn-link" %>
+    <% end %>
+  </div>
+<% end %>

@@ -1,10 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+    <div class="col-lg-6 col-md-6 ml-auto mr-auto">
 
         <div class="card profile-card-2">
+          <div class="card-header">
+          <div class="card-title lead"><h3 class="text-center">Log in</h3></div>
+          </div>
            <div class="card-body pt-5">
-             <div class="card-tile"><h3 class="text-center">Log in</h3></div>
              <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                <div class="form-group">
                  <%= f.email_field :email, autofocus: true, placeholder: 'Email Address', class: 'form-control' %>
@@ -15,7 +17,7 @@
                </div>
 
                <% if devise_mapping.rememberable? -%>
-                 <div class="form-check">
+                 <div class="form-group form-check">
                    <label class="form-check-label">
                      <%= f.check_box :remember_me, class: "form-check-input" %>
                      Remember me
@@ -24,16 +26,16 @@
                <% end -%>
 
                  <div class="form-group">
-                   <%= f.submit "Log in", class: "btn btn-success btn-block btn-lg" %>
+                   <%= f.submit "Log in", class: "btn btn-success btn-block btn-lg",  data:{disable_with:"<i class='fas fa-spinner fa-spin'></i> Signing in..."}  %>
 
                </div>
              <% end %>
+             <hr>
+             <div class="text-center">
+               <%= render "devise/shared/links" %>
            </div>
-           <div class="card-footer">
-           <div class="text-center">
-             <%= render "devise/shared/links" %>
            </div>
-         </div>
+
 
         </div>
     </div>
