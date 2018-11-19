@@ -1,5 +1,9 @@
 class DocumentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_document, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :current_user_documents, only:[:show]
+
 
   # GET /documents
   # GET /documents.json
@@ -14,7 +18,7 @@ class DocumentsController < ApplicationController
 
   # GET /documents/new
   def new
-    @document = Document.new
+    @document = current_user.documents.build
   end
 
   # GET /documents/1/edit
@@ -24,7 +28,7 @@ class DocumentsController < ApplicationController
   # POST /documents
   # POST /documents.json
   def create
-    @document = Document.new(document_params)
+    @document = current_user.documents.build(document_params)
 
     respond_to do |format|
       if @document.save
@@ -71,4 +75,16 @@ class DocumentsController < ApplicationController
     def document_params
       params.require(:document).permit(:title,:file, :slug)
     end
+
+    # check if the user is authorised to edit,update or destroy the cv
+    def correct_user
+      @document = current_user.documents.find_by(id: params[:id])
+          redirect_to documents_path, notice: "Not authorised to edit this document" if @document.nil?
+    end
+    # check if  cv belongs to the correct user - current user
+      def current_user_documents
+        if user_signed_in?
+          @documents = current_user.documents.order("created_at DESC")
+       end
+     end
 end

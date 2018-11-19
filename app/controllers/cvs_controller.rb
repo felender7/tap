@@ -1,5 +1,8 @@
 class CvsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_cv, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :current_user_cvs, only:[:show]
 
   # GET /cvs
   # GET /cvs.json
@@ -14,7 +17,7 @@ class CvsController < ApplicationController
 
   # GET /cvs/new
   def new
-    @cv = Cv.new
+    @cv = current_user.cvs.build
   end
 
   # GET /cvs/1/edit
@@ -24,7 +27,7 @@ class CvsController < ApplicationController
   # POST /cvs
   # POST /cvs.json
   def create
-    @cv = Cv.new(cv_params)
+    @cv = current_user.cvs.build(cv_params)
 
     respond_to do |format|
       if @cv.save
@@ -64,11 +67,22 @@ class CvsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cv
-      @cv = Cv.find(params[:id])
+      @cv = Cv.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cv_params
-      params.require(:cv).permit(:identification_type)
+      params.require(:cv).permit(:identification_type,:user_id,:id_passport,:gender, :ethnicity ,:date_of_birth, :place_of_birth,:disability, :education_type, :avatar)
     end
+    # check if the user is authorised to edit,update or destroy the cv
+    def correct_user
+      @cv = current_user.cvs.find_by(id: params[:id])
+          redirect_to cvs_path, notice: "Not authorised to edit this cv" if @cv.nil?
+    end
+    # check if  cv belongs to the correct user - current user
+      def current_user_cvs
+        if user_signed_in?
+          @cvs = current_user.cvs.order("created_at DESC")
+       end
+     end
 end

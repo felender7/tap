@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
+
   def index
+
   end
 
   def terms
@@ -9,4 +11,6 @@ class HomeController < ApplicationController
   end
 
 
+  private
+  
 end

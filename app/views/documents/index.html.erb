@@ -38,15 +38,16 @@
             <tbody>
               <% @documents.each do |document| %>
                 <%= content_tag :tr, id: dom_id(document), class: dom_class(document) do %>
+                <% if current_user && document.user == current_user %>
                   <td><%= document.title %></td>
                   <td><%= link_to document do %>
                     <i class="fas fa-list-ul"></i>
                     <%end%> |
-
                     <%= link_to document, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } do %>
                        <i class="fas fa-trash-alt"></i>
                       <%end%>
                   </td>
+                    <% end %>
                 <% end %>
               <% end %>
             </tbody>

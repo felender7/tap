@@ -3,19 +3,19 @@
       <div class="col-lg-8">
         <div class="jumbotron jumbotron-fluid bg-success text-light">
           <div class="container">
+        <% if current_user.cvs.empty? %>
           <h3 class="display-4">Hi, <%=current_user.name%></h3>
-
-          <p class="lead">Your Profile is incomplete</p>
-               <%=link_to root_path , class:'btn btn-warning' do %>
-               🚀 UPDATE PROFILE
+          <p class="lead">you havent created a cv yet!</p>
+               <%=link_to new_cv_path , class:'btn btn-warning' do %>
+               🚀 GET STARTED
                <%end%>
-
+             <%else%>
+            <h3 class="display-4">Hi, <%=current_user.name%></h3>
             <p class="lead">Welcome to Goverment job placement</p>
             <span class="badge bg-warning">#TAP00<%=current_user.id%></span>
             <span class="badge bg-primary text-light"><%=current_user.profile_type%></span>
             <span class="badge bg-secondary text-light"><%=current_user.email%></span>
-
-
+          <%end%>
         </div>
         </div>
       </div>

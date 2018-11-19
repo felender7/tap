@@ -1,17 +1,92 @@
-<div class="page-header">
-  <%= link_to cvs_path, class: 'btn btn-default' do %>
-    <span class="glyphicon glyphicon-list-alt"></span>
-    All Cvs
-  <% end %>
-  <%= link_to edit_cv_path(@cv), class: 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-pencil"></span>
-    Edit
-  <% end %>
-  <h1>Show cv</h1>
+
+<div class="container-fluid">
+  <div class="shadow-sm p-3 mb-5 bg-light">
+      <div class="row">
+        <div class="col-md-8 text-muted">
+          <h4><i class="far fa-list-alt"></i> CV Summary</h4>
+        </div>
+        <div class="col-md-4">
+          <a href="/" class="float-right text-danger"> <i class="fa fa-window-close" data-toggle="tooltip" title="Close"> </i></a>
+        </div>
+      </div>
+  </div>
+<div class="shadow-sm p-3 mb-5 bg-white">
+<div class="row">
+
+  <div class="col-lg-2">
+    <% if @cv.avatar.attached? %>
+      <%= image_tag @cv.avatar.variant(resize:"150x150"), class:"rounded margin-bottom-20" %>
+    <%else%>
+    <%= image_tag gravatar_image_url(current_user.email, size: 40), height: 150, width: 150, class: "rounded margin-bottom-20" %>
+
+    <%end%>
+
+  </div>
+  <div class="col-lg-6">
+    <div class="table-responsive-sm">
+        <table class="table table-sm">
+          <tbody>
+            <tr class="d-flex"></tr>
+         </tbody>
+      <%if current_user && @cv.user == current_user%>
+            <tr>
+              <td><strong>Full Name:</strong></td>
+              <td><%=current_user.name%></td>
+            </tr>
+            <tr>
+              <td><strong>Email:</strong></td>
+              <td><%=current_user.email%></td>
+            </tr>
+
+            <tr>
+              <td><strong>Date of Birth:</strong></td>
+              <td><%= @cv.date_of_birth %></td>
+            </tr>
+
+             <tr>
+               <td><strong>Gender:</strong></td>
+               <td><%= @cv.gender %></td>
+             </tr>
+
+             <tr>
+               <td><strong>Ethnicity:</strong></td>
+               <td><%= @cv.ethnicity %></td>
+             </tr>
+
+             <tr>
+               <td><strong>Place of Birth:</strong></td>
+               <td><%= @cv.place_of_birth %></td>
+             </tr>
+
+             <tr>
+               <td><strong>Disability:</strong></td>
+               <td><%= @cv.disability %></td>
+             </tr>
+
+             <tr>
+               <td><strong>Education:</strong></td>
+               <td><%= @cv.education_type %></td>
+             </tr>
+          <%end%>
+        </table>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <%=render'shared/tracking'%>
+  </div>
 </div>
 
-<dl class="dl-horizontal">
-  <dt>Identification type:</dt>
-  <dd><%= @cv.identification_type %></dd>
+    <hr>
 
-</dl>
+    <%= link_to edit_cv_path(@cv) do %>
+       <i class="fas fa-edit"></i>
+    <%end%>
+       |
+
+    <%=link_to new_document_path, class:'btn btn-warning btn-sm' do %>
+      Next - <i class="fas fa-cloud-upload-alt"></i>Upload Documents
+    <%end%>
+
+  </div>
+</div>
