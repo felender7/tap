@@ -76,7 +76,7 @@ class CvsController < ApplicationController
     end
     # check if the user is authorised to edit,update or destroy the cv
     def correct_user
-      @cv = current_user.cvs.find_by(id: params[:id])
+      @cv = current_user.cvs.find_by(params[:friendly])
           redirect_to cvs_path, notice: "Not authorised to edit this cv" if @cv.nil?
     end
     # check if  cv belongs to the correct user - current user

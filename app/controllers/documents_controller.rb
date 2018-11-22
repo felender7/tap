@@ -1,7 +1,7 @@
 class DocumentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_document, only: [:show, :edit, :update, :destroy]
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :correct_user_for_docs, only: [:edit, :update, :destroy]
   before_action :current_user_documents, only:[:show]
 
 
@@ -77,8 +77,8 @@ class DocumentsController < ApplicationController
     end
 
     # check if the user is authorised to edit,update or destroy the cv
-    def correct_user
-      @document = current_user.documents.find_by(id: params[:id])
+    def correct_user_for_docs
+      @document = current_user.documents.find_by(params[:friendly])
           redirect_to documents_path, notice: "Not authorised to edit this document" if @document.nil?
     end
     # check if  cv belongs to the correct user - current user

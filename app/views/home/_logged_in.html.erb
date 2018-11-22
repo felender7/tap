@@ -12,9 +12,13 @@
              <%else%>
             <h3 class="display-4">Hi, <%=current_user.name%></h3>
             <p class="lead">Welcome to Goverment job placement</p>
-            <span class="badge bg-warning">#TAP00<%=current_user.id%></span>
-            <span class="badge bg-primary text-light"><%=current_user.profile_type%></span>
-            <span class="badge bg-secondary text-light"><%=current_user.email%></span>
+            <span class="badge bg-warning"><i class="fas fa-user-lock"></i> #TAP00<%=current_user.id%></span>
+            <span class="badge bg-primary text-light">
+                <i class="far fa-building"></i>
+              <%=current_user.profile_type%></span>
+
+            <span class="badge bg-secondary text-light"> <i class="far fa-envelope-open"></i> <%=current_user.email%></span> <br> <br>
+            <a class="btn btn-danger" href="#" >TAP SCORE</a>
           <%end%>
         </div>
         </div>

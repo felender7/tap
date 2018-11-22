@@ -3,17 +3,29 @@
   <table class="table table-sm">
     <tbody>
       <tr>
-        <td><strong>1</strong> Create Profile </td>
+        <td><strong>1</strong> Create Profile  </td>
         <td><i class="fas fa-check-circle"></i></td>
       </tr>
       <tr>
-        <td><strong>2</strong> Create CV </td>
-        <td><i class="fas fa-check-circle"></i></td>
+      <td><strong>2</strong> Create CV  </td>
+        <%if current_user.cvs.exists? %>
+          <td><i class="fas fa-check-circle"></i></td>
+        <%else%>
+          <td><i class="text-warning fas fa-times-circle"></i></td>
+        <%end%>
       </tr>
-      
+
       <tr>
-        <td><strong>3</strong> Upload Documents </td>
-        <td><i class="text-warning fas fa-window-close"></i></td>
+      <td><strong>3</strong> Upload Documents  </td>
+        <%if current_user.documents.exists? %>
+          <td><i class="fas fa-check-circle"></i></td>
+        <%else%>
+          <td><i class="text-warning fas fa-times-circle"></i></td>
+        <%end%>
+      </tr>
+      <tr>
+        <td><strong>4</strong> Payment  </td>
+        <td><i class="text-warning fas fa-times-circle"></i></td>
       </tr>
     </tbody>
   </table>

@@ -33,7 +33,10 @@
               </div>
             <% end %>
             <hr>
-            <%= form.submit'Upload', class: 'btn btn-primary' %>
+
+            <%= form.button(type: "submit", class: "btn btn-primary" , data: {disable_with: "Uploading..."}) do %>
+               <i class="fas fa-cloud-upload-alt"></i> upload
+            <% end %>
 
             <% if document.persisted? %>
               <%= link_to "Cancel", document, class: "btn btn-link" %>

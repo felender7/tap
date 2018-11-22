@@ -27,6 +27,10 @@
         </div>
 
         <div class="form-group">
+          <%= f.number_field :phone, autofocus: false, class: 'form-control', placeholder: "Phone Number" %>
+        </div>
+
+        <div class="form-group">
           <%= f.select :profile_type,['Individual', 'Company'],{}, autofocus: false, class: 'form-control'%>
         </div>
 
