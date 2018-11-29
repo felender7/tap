@@ -4,12 +4,22 @@
     <%=link_to root_path, class:"nav-link active" do %>
     <i class="fas fa-tachometer-alt"></i> Dashboard
     <%end%>
+    <%if current_user.profile_type == "Individual"%>
     <a class="nav-link" href="/cvs"><i class="fas fa-folder-open"></i> My CV</a>
     <a class="nav-link" href="/documents"><i class="fas fa-folder"></i> My Documents</a>
     <a class="nav-link" href="#"><i class="fas fa-user"></i> My Jobs</a>
     <a class="nav-link" href="#"><i class="fas fa-star-half-alt"></i> My Tap Score</a>
     <a class="nav-link" href="#"><i class="far fa-meh-rolling-eyes"></i> My Reviews</a>
+       <%else%>
+     <a class="nav-link" href="/company_details"><i class="far fa-building"></i></i>Company Details</a>
+     <a class="nav-link" href="/cvs"><i class="fas fa-folder-open"></i> Post Job</a>
+     <a class="nav-link" href="/cvs"><i class="fas fa-users"></i> Applicants</a>
+     <a class="nav-link" href="#"><i class="far fa-meh-rolling-eyes"></i> My Reviews</a>
+    <%end%>
+
+
     <a class="nav-link" href="/users/edit"><i class="fas fa-cog"></i> Settings</a>
+
   </nav>
 </div>
 <%end%>

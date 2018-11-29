@@ -1,6 +1,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resources :company_details
   get '/company', to: 'company#index'
   resources :cvs
   resources :charges

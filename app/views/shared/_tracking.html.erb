@@ -1,3 +1,5 @@
+
+<% if current_user.profile_type == "Individual" %>
 <div class="shadow-sm p-3 mb-5 bg-success text-light">
   <h4>Steps</h4>
   <table class="table table-sm">
@@ -30,3 +32,7 @@
     </tbody>
   </table>
 </div>
+
+<% else current_user.profile_type == "Company" %>
+<p>hello</p>
+<%end%>

@@ -1,0 +1,58 @@
+<%= form_with(model: company_detail, local: true) do |form| %>
+<div class="container-fluid">
+<div class="row">
+  <div class="col-lg-8">
+    <div class="shadow-sm p-3 mb-5 bg-light">
+    
+      <%= render 'errors', company_detail: @company_detail %>
+
+      <div class="form-group">
+        <%= form.text_field :company_name, class: 'form-control' , placeholder:'Company name'%>
+      </div>
+
+      <div class="form-group">
+        <%= form.text_field :registration, class: 'form-control' , placeholder:'Registration' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.text_field :tel, class: 'form-control' , placeholder:'Tel' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.text_field :industry, class: 'form-control' , placeholder:'Industry' %>
+      </div>
+
+      <div class="form-group jumbotron jumbotron-sm">
+        <small id="passwordHelpBlock" class="form-text text-danger">
+          Upload Company logo
+        </small>
+        <%= form.file_field :company_logo, class: 'form-control-file' %>
+      </div>
+
+      <div class="form-group">
+        <% if company_detail.persisted? %>
+          <div class="float-right">
+            <%= link_to 'Destroy', company_detail, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
+          </div>
+        <% end %>
+
+        <%= form.button(type: "submit", class: "btn btn-primary" , data: {disable_with: "Saving..."}) do %>
+           <i class="fas fa-cloud-upload-alt"></i> Save
+        <% end %>
+
+        <% if company_detail.persisted? %>
+          <%= link_to "Cancel", company_detail, class: "btn btn-link" %>
+        <% else %>
+          <%= link_to "Cancel", company_details_path, class: "btn btn-link" %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <%=render'shared/tracking'%>
+  </div>
+</div> <!--row end !-->
+</div><!--container end !-->
+<% end %>

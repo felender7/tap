@@ -78,7 +78,9 @@
           </div>
         <% end %>
 
-        <%= form.submit class: 'btn btn-primary' %>
+        <%= form.button(type: "submit", class: "btn btn-primary" , data: {disable_with: "Saving..."}) do %>
+           <i class="fas fa-cloud-upload-alt"></i> Save
+        <% end %>
 
         <% if cv.persisted? %>
           <%= link_to "Cancel", cv, class: "btn btn-link" %>
