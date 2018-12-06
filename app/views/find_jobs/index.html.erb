@@ -1,0 +1,7 @@
+<h1>FindJobs#index</h1>
+<p>Find me in app/views/find_jobs/index.html.erb</p>
+<%@jobs.each do |job|%>
+  <h3><%=job.title%></h3>
+  <small><%=job.description%></small>
+  <hr>
+<%end%>

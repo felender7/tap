@@ -1,0 +1,80 @@
+<div class="container-fluid">
+  <div class="shadow-sm p-3 mb-5 bg-light">
+      <div class="row">
+        <div class="col-md-8 text-muted">
+          <h4><i class="far fa-list-alt"></i> Posted Job Summary</h4>
+        </div>
+        <div class="col-md-4">
+          <a href="/" class="float-right text-danger"> <i class="fa fa-window-close" data-toggle="tooltip" title="Close"> </i></a>
+        </div>
+      </div>
+  </div>
+<div class="shadow-sm p-3 mb-5 bg-white">
+<div class="row">
+  <div class="col-lg-12">
+    <div class="table-responsive-sm">
+        <table class="table table-sm">
+          <tbody>
+            <tr class="d-flex"></tr>
+         </tbody>
+      <%if current_user && @job.user == current_user %>
+            <tr>
+              <td><strong>Title:</strong></td>
+              <td><%= @job.title %></td>
+            </tr>
+            <tr>
+              <td><strong>Description:</strong></td>
+              <td><%= @job.description %></td>
+            </tr>
+            <tr>
+              <td><strong>City:</strong></td>
+              <td><%= @job.city %></td>
+            </tr>
+
+            <tr>
+              <td><strong>Work Type:</strong></td>
+              <td><%= @job.work_type %></td>
+            </tr>
+
+             <tr>
+               <td><strong>Contract Type:</strong></td>
+               <td><%= @job.contract_type %></td>
+             </tr>
+
+             <tr>
+               <td><strong>Salary:</strong></td>
+               <% if@job.salary_type =="Negotiable"%>
+              <td> <%= @job.salary_type %> </td>
+               <%else%>
+               <td>R<%= @job.salary %> - <%= @job.salary_type %> </td>
+               <%end%>
+             </tr>
+
+             <tr>
+               <td><strong>Duties:</strong></td>
+               <td><%= @job.duties.html_safe %></td>
+             </tr>
+
+             <tr>
+               <td><strong>Requirements:</strong></td>
+               <td><%= @job.requirements %></td>
+             </tr>
+
+          <%end%>
+        </table>
+    </div>
+  </div>
+</div>
+
+    <hr>
+
+    <%= link_to edit_job_path(@job) do %>
+       <i class="fas fa-edit"></i>
+    <%end%>
+       |
+
+    <%=link_to new_document_path, class:'btn btn-warning btn-sm' do %>
+      Next - <i class="fas fa-cloud-upload-alt"></i>Upload Documents
+    <%end%>
+
+  </div>

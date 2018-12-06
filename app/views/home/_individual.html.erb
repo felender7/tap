@@ -12,7 +12,7 @@
                <%end%>
              <%else%>
             <h3 class="display-4">Hi, <%=current_user.name%></h3>
-            <p class="lead">Welcome to Goverment job placement</p>
+            <p class="lead">Welcome to TAP job placement</p>
             <span class="badge bg-warning"><i class="fas fa-user-lock"></i> #TAP00<%=current_user.id%></span>
             <span class="badge bg-primary text-light">
                 <i class="far fa-building"></i>
@@ -26,7 +26,7 @@
       </div>
       <hr>
       <div class="col-lg-4">
-        <div id="calendar"></div>
+        <%=render'home/templates/calender'%>
       </div>
 </div>
   <hr>
@@ -35,7 +35,6 @@
     <div class="shadow-sm p-3 mb-5 bg-light">
         <h3>See Jobs Open  for you</h3>
          <%=render'home/templates/open_companies'%>
-
     </div>
   </div>
 </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_29_083628) do
+ActiveRecord::Schema.define(version: 2018_12_05_122645) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -91,6 +91,26 @@ ActiveRecord::Schema.define(version: 2018_11_29_083628) do
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.string "city"
+    t.string "work_type"
+    t.string "contract_type"
+    t.string "salary"
+    t.string "requirements"
+    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.text "duties"
+    t.string "salary_type"
+    t.integer "company_detail_id"
+    t.index ["company_detail_id"], name: "index_jobs_on_company_detail_id"
+    t.index ["slug"], name: "index_jobs_on_slug", unique: true
+    t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
   create_table "notifications", force: :cascade do |t|

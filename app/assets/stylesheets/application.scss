@@ -18,7 +18,7 @@ $white-color                :#fff !important;
 @import "carousel";
 @import "navscroller";
 @import "fullcalendar";
-
+@import "simplemde";
 
 
 // Fixes bootstrap nav-brand container overlap
@@ -90,7 +90,7 @@ a:active {text-decoration: none;}
 #logo{
   font-weight: bold;
   font-size: 25px;
-  color: #009432;
+  color: #9a1a54;
 }
 
 //buttons
@@ -109,4 +109,15 @@ a:active {text-decoration: none;}
 
 .fc-left h2{
   font-size: 25px;
+}
+
+.btn-success {
+    color: #fff !important;
+    background-color: #9a1a54;
+    border-color: #9a1a54;
+}
+
+
+.bg-success {
+    background-color: #9a1a54 !important;
 }

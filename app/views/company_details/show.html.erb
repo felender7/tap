@@ -29,6 +29,7 @@
             <tr class="d-flex"></tr>
          </tbody>
       <%if current_user && @company_detail.user == current_user%>
+        <h4 class="text-muted">DETAILS OF THE PERSON IN CHARGE</h4>
             <tr>
               <td><strong>Full Name:</strong></td>
               <td><%=current_user.name%></td>
@@ -37,7 +38,14 @@
               <td><strong>Email:</strong></td>
               <td><%=current_user.email%></td>
             </tr>
-
+            <tr>
+              <td><strong>Phone:</strong></td>
+              <td><%=current_user.phone%></td>
+            </tr>
+              <tr>
+                <td><h4 class="text-muted">COMPANY DETAILS</h4></td>
+                <td></td>
+              </tr>
             <tr>
               <td><strong>Company Name:</strong></td>
               <td><%= @company_detail.company_name %></td>
@@ -75,8 +83,8 @@
     <%end%>
        |
 
-    <%=link_to new_document_path, class:'btn btn-warning btn-sm' do %>
-      Next - <i class="fas fa-cloud-upload-alt"></i>Upload Documents
+    <%=link_to new_job_path, class:'btn btn-warning btn-sm' do %>
+      Next - <i class="fas fa-cloud-upload-alt"></i>Post a job
     <%end%>
 
   </div>

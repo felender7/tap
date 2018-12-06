@@ -2,7 +2,7 @@
    <% @company_details.each do |company_detail|%>
    <li class="list-inline-item">
      <% if company_detail.company_logo.attached? %>
-       <%= image_tag company_detail.company_logo.variant(resize:"150x150"), class:"rounded margin-bottom-20" %>
+       <%= image_tag company_detail.company_logo.variant(resize:"150x150"), class:"rounded margin-bottom-20", style:"150x150" %>
      <%else%>
      <%= image_tag gravatar_image_url(current_user.email, size: 40), height: 150, width: 150, class: "rounded margin-bottom-20" %>
      <%end%>

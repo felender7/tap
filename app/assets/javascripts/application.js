@@ -20,4 +20,5 @@
 //= require turbolinks
 //= require moment
 //= require fullcalendar
+//= require simplemde
 //= require_tree .

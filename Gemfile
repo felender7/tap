@@ -90,4 +90,5 @@ gem 'webpacker', '~> 3.5', '>= 3.5.3'
 gem 'whenever', require: false
 gem 'stripe'
 gem 'fullcalendar-rails'
+gem 'simplemde'
 gem 'momentjs-rails'
