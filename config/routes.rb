@@ -1,6 +1,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  get 'about/index'
   get 'find_jobs/index'
   resources :jobs
   resources :company_details
