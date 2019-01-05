@@ -126,6 +126,17 @@ a:active {text-decoration: none;}
     border-color: #9a1a54;
 }
 
+.btn-success:hover {
+    color: $white-color;
+    background-color: #ce5c90;
+    border-color: #ce5c90;
+}
+
+.btn-success:active {
+    color: $white-color;
+    background-color: #ce5c90;
+    border-color: #ce5c90;
+}
 
 .bg-success {
     background-color: #9a1a54 !important;
