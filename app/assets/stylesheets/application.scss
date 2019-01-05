@@ -21,6 +21,8 @@ $btn-success-color          :#fff !important;
 @import "simplemde";
 
 
+
+
 // Fixes bootstrap nav-brand container overlap
 @include media-breakpoint-down(xs) {
   .container {
