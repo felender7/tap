@@ -3,7 +3,7 @@ $white-color                :#fff !important;
 //colors end
 
 //Customize bootstrap
-//$btn-success-color          :#fff !important;
+$btn-success-color          :#fff !important;
 //$btn-success-bg :$white-color;
 // $navbar-default-bg: #312312;
 // $light-orange: #ff8c00;
@@ -45,7 +45,8 @@ body > .container-fluid {
     padding: 40px 15px 0;
 }
 
-
+a{color:#9a1a54 }
+a:hover{color:#ce5c90 }
 a:link {text-decoration: none;}
 a:visited {text-decoration: none;}
 a:hover {text-decoration: none;}
@@ -100,6 +101,13 @@ a:active {text-decoration: none;}
     background-color: #28a745;
     border-color: #28a745;
 }
+
+.btn-success:hover {
+    color: $white-color;
+    background-color: #ce5c90;
+    border-color: #ce5c90;
+}
+
 
 #qualification{
   visibility: hidden;

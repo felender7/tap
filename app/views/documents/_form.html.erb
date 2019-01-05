@@ -1,28 +1,22 @@
 <%= form_with(model: document, local: true) do |form| %>
-  <% if document.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(document.errors.count, "error") %> prohibited this document from being saved:</h2>
-      <ul>
-      <% document.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-8">
         <div class="shadow-sm p-3 mb-5 bg-light">
+          <%= render 'errors', document: @document %>
+
           <div class="form-group">
-            <label for="title">Name</label>
-            <%= form.text_field :title, class: 'form-control', placeholder:'Give the document a name' %>
+            <%if @identification_type.identification_type =="ID" %>
+            <%= form.select :title,['Proof of Residence', 'ID', 'Certificate'],{prompt: "Select File Name"}, class: 'form-control' %>
+            <%else%>
+            <%= form.select :title,['Proof of Residence', 'ID', 'Certificate','Police Clearence'],{prompt: "Select File Name"}, class: 'form-control' %>
+            <%end%>
           </div>
 
           <div class="form-group">
             <%= form.file_field :file, class: 'form-control-file' %>
-            <small id="passwordHelpBlock" class="form-text text-danger">
-              Only Pdf files are allowed.
+            <small id="passwordHelpBlock well" class="form-text text-danger">
+              *Only Pdf files are allowed.
             </small>
           </div>
 
@@ -34,8 +28,8 @@
             <% end %>
             <hr>
 
-            <%= form.button(type: "submit", class: "btn btn-primary" , data: {disable_with: "Uploading..."}) do %>
-               <i class="fas fa-cloud-upload-alt"></i> upload
+            <%= form.button(type: "submit", class: "btn btn-success" , data: {disable_with:"<i class='fa fa-spinner fa-spin'></i> Uploading..." .html_safe }) do %>
+               <i class="fas fa-cloud-upload-alt"></i> UPLOAD
             <% end %>
 
             <% if document.persisted? %>
@@ -54,7 +48,9 @@
             <i class="fas fa-check-circle"></i> Certified ID Copy <br>
             <i class="fas fa-check-circle"></i> Proof of Residence not older than 3 month <br>
             <i class="fas fa-check-circle"></i> Certified  Certificate(s)<br>
-
+            <%if @identification_type.identification_type == "Passport" %>
+            <i class="fas fa-check-circle"></i> Police Clearence<br>
+            <%end%>
         </div>
       </div>
     </div>

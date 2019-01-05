@@ -7,7 +7,7 @@
 <%if current_user && cv.user == current_user%>
   <%= content_tag :tr, id: dom_id(cv), class: dom_class(cv) do %>
       <h3 class="display-4"><%=current_user.name%></h3>
-      <%= link_to cv , class:'btn btn-warning'   do%>
+      <%= link_to cv , class:'btn btn-success'   do%>
          <i class="far fa-list-alt"></i> Curriculum Vitae
       <% end%>
       <hr>

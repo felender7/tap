@@ -5,10 +5,12 @@
     <i class="fas fa-tachometer-alt"></i> Dashboard
     <%end%>
     <%if current_user.profile_type == "Individual"%>
-    <a class="nav-link" href="/cvs"><i class="fas fa-folder-open"></i> My CV</a>
-    <a class="nav-link" href="/documents"><i class="fas fa-folder"></i> My Documents</a>
-    <a class="nav-link" href="#"><i class="fas fa-user"></i> My Jobs</a>
-    <a class="nav-link" href="#"><i class="fas fa-star-half-alt"></i> My Tap Score</a>
+    <%=link_to @cv_show, class:"nav-link" do %>
+      <i class="fas fa-folder-open"></i> My CV <span class="badge bg-success text-light">1</span>
+    <%end%>
+    <a class="nav-link" href="/documents"><i class="fas fa-folder"></i> My Documents <span class="badge bg-success text-light"><%=@document_count%></span> </a>
+    <a class="nav-link" href="#"><i class="fas fa-user"></i> My Jobs <span class="badge bg-success text-light">0</span> </a>
+    <a class="nav-link" href="#"><i class="fas fa-star-half-alt"></i> My Tap Score <span class="badge bg-success text-light"> <%=render'shared/tap_score'%>  /10</span> </a>
     <a class="nav-link" href="#"><i class="far fa-meh-rolling-eyes"></i> My Reviews</a>
        <%else%>
      <a class="nav-link" href="/company_details"><i class="far fa-building"></i></i> Company Details</a>

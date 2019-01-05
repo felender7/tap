@@ -1,9 +1,10 @@
 <%= form_with(model: cv, local: true) do |form| %>
-<%= render 'errors', cv: @cv %>
+
 <div class="container-fluid">
 <div class="row">
   <div class="col-lg-8">
     <div class="shadow-sm p-3 mb-5 bg-light">
+      <%= render 'errors', cv: @cv %>
       <div class="form-row">
         <div class="form-group col-md-4">
           <h4><%=current_user.name%></h4>
@@ -38,9 +39,8 @@
           <%= form.select :disability,['Not disabled', 'Disabled'], {prompt:"Do you have a Disability"},class: 'form-control' %>
         </div>
 
-        <div class="form-group col-md-6" style="margin-top: -9px">
-        <p> <small>Date of Birth</small><br>
-          <%= form.date_select :date_of_birth, start_year: 1900, end_year: Date.today.year,class: 'form-control'%>
+        <div class="form-group col-md-6">
+          <%= form.date_field :date_of_birth, start_year: 1900, end_year: Date.today.year,class: 'form-control'%>
         </div>
       </div>
 
@@ -64,7 +64,7 @@
 
       <div class="form-group jumbotron jumbotron-sm">
         <small id="passwordHelpBlock" class="form-text text-danger">
-          Upload Avatar
+          Upload Picture - 128 x 128px
         </small>
         <%= form.file_field :avatar, class: 'form-control-file' %>
       </div>
@@ -77,9 +77,8 @@
           </div>
         <% end %>
 
-        <%= form.button(type: "submit", class: "btn btn-primary" , data: {disable_with: "Saving..."}) do %>
-           <i class="fas fa-cloud-upload-alt"></i> Save
-        <% end %>
+
+        <%= form.button "SAVE", class: "btn btn-success", 'data-disable-with' => "<i class='fa fa-spinner fa-spin'></i> Saving...".html_safe %>
 
         <% if cv.persisted? %>
           <%= link_to "Cancel", cv, class: "btn btn-link" %>

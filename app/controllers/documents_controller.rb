@@ -3,6 +3,7 @@ class DocumentsController < ApplicationController
   before_action :set_document, only: [:show, :edit, :update, :destroy]
   before_action :correct_user_for_docs, only: [:edit, :update, :destroy]
   before_action :current_user_documents, only:[:show]
+  before_action :get_identification_type
 
 
   # GET /documents
@@ -19,6 +20,8 @@ class DocumentsController < ApplicationController
   # GET /documents/new
   def new
     @document = current_user.documents.build
+    get_identification_type
+
   end
 
   # GET /documents/1/edit
@@ -29,7 +32,7 @@ class DocumentsController < ApplicationController
   # POST /documents.json
   def create
     @document = current_user.documents.build(document_params)
-
+    get_identification_type
     respond_to do |format|
       if @document.save
         format.html { redirect_to @document, notice: 'Document was successfully created.' }
@@ -86,5 +89,10 @@ class DocumentsController < ApplicationController
         if user_signed_in?
           @documents = current_user.documents.order("created_at DESC")
        end
+     end
+
+    # Get get identification type for the current_user
+     def get_identification_type
+       @identification_type = current_user.cvs.find_by(params[:identification_type])
      end
 end

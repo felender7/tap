@@ -17,7 +17,7 @@
     <% if @cv.avatar.attached? %>
       <%= image_tag @cv.avatar.variant(resize:"150x150"), class:"rounded margin-bottom-20" %>
     <%else%>
-    <%= image_tag gravatar_image_url(current_user.email, size: 40), height: 150, width: 150, class: "rounded margin-bottom-20" %>
+    <%= image_tag ("placeholder_avatar.png"), height: 150, width: 150, class: "rounded margin-bottom-20" %>
     <%end%>
 
   </div>
@@ -35,6 +35,18 @@
             <tr>
               <td><strong>Email:</strong></td>
               <td><%=current_user.email%></td>
+            </tr>
+
+            <tr>
+              <td><strong>ID/Passport:</strong></td>
+              <td><%= @cv.id_passport%> <br>
+                <%if @cv.identification_type == "ID" %>
+                <small class="badge bg-success text-light"><i class="fas fa-user"></i> ID</small>
+                <%else%>
+                <small class="badge bg-success text-light"><i class="fas fa-user"></i> Passport</small>
+
+                <%end%>
+              </td>
             </tr>
 
             <tr>
@@ -83,8 +95,8 @@
     <%end%>
        |
 
-    <%=link_to new_document_path, class:'btn btn-warning btn-sm' do %>
-      Next - <i class="fas fa-cloud-upload-alt"></i>Upload Documents
+    <%=link_to new_document_path, class:'btn btn-success btn-sm' do %>
+      Next - Upload Documents
     <%end%>
 
   </div>
