@@ -89,7 +89,6 @@ gem 'sitemap_generator', '~> 6.0', '>= 6.0.1'
 gem 'webpacker', '~> 3.5', '>= 3.5.3'
 gem 'whenever', require: false
 gem 'stripe'
-gem 'fullcalendar-rails'
 gem 'simplemde'
 gem 'momentjs-rails'
-gem 'jquery-ui-rails'
+gem 'pickadate-rails'
