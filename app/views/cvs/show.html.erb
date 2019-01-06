@@ -39,13 +39,13 @@
 
             <tr>
               <td><strong>ID/Passport:</strong></td>
-              <td><%= @cv.id_passport%> <br>
+              <td>  <%= @cv.id_passport%>
                 <%if @cv.identification_type == "ID" %>
-                <small class="badge bg-success text-light"><i class="fas fa-user"></i> ID</small>
-                <%else%>
-                <small class="badge bg-success text-light"><i class="fas fa-user"></i> Passport</small>
+                  <small class="badge bg-success text-light"><i class="fas fa-user"></i> ID</small>
+                  <%else%>
+                  <small class="badge bg-success text-light"><i class="fas fa-user"></i> Passport</small>
 
-                <%end%>
+                  <%end%>
               </td>
             </tr>
 
@@ -77,6 +77,16 @@
              <tr>
                <td><strong>Education:</strong></td>
                <td><%= @cv.education_type %></td>
+             </tr>
+
+             <tr>
+               <td><strong>Verified:</strong></td>
+               <td><%if @current_user.varification == true %>
+                <span class="badge bg-danger text-light"><i class="fas fa-certificate"></i> verified</span>
+                <%else%>
+                <span class="badge bg-danger text-light"><i class="fas fa-certificate"></i> Not verified </span>
+                 <%end%>
+               </td>
              </tr>
           <%end%>
         </table>
