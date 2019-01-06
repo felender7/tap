@@ -19,6 +19,8 @@ $btn-success-color          :#fff !important;
 @import "navscroller";
 @import "fullcalendar";
 @import "simplemde";
+@import "jquery-ui/datepicker";
+@import "jquery-ui/core";
 
 
 
@@ -142,4 +144,12 @@ a:active {text-decoration: none;}
 
 .bg-success {
     background-color: #9a1a54 !important;
+}
+
+.bg-image-full {
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
 }
