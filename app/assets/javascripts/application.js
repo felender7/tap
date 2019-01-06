@@ -21,3 +21,12 @@
 //= require moment
 //= require simplemde
 //= require_tree .
+
+
+$(function(){
+      //hide alert after 5 second
+      $('.alert').delay( 5000 ).fadeOut( 1000 );
+      //Show tooltip
+      $('[data-toggle="tooltip"]').tooltip();
+
+});

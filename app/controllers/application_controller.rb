@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   before_action :calculating_tap_score
 
 
+
   protected
 
       def configure_permitted_parameters
@@ -16,8 +17,9 @@ class ApplicationController < ActionController::Base
 
       def get_document_number
         if user_signed_in?
-        @document_count = current_user.documents.count
-      end
+          @document_count = current_user.documents.count
+          @cv_count = current_user.cvs.count
+        end
       end
 
       def calculating_tap_score
@@ -25,4 +27,6 @@ class ApplicationController < ActionController::Base
           @tap_score = 2
       end
     end
+
+
   end

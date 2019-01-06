@@ -6,7 +6,7 @@
     <%end%>
     <%if current_user.profile_type == "Individual"%>
     <%=link_to @cv_show, class:"nav-link" do %>
-      <i class="fas fa-folder-open"></i> My CV <span class="badge bg-success text-light">1</span>
+      <i class="fas fa-folder-open"></i> My CV <span class="badge bg-success text-light"><%=@cv_count%></span>
     <%end%>
     <a class="nav-link" href="/documents"><i class="fas fa-folder"></i> My Documents <span class="badge bg-success text-light"><%=@document_count%></span> </a>
     <a class="nav-link" href="#"><i class="fas fa-user"></i> My Jobs <span class="badge bg-success text-light">0</span> </a>
