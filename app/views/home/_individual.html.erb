@@ -14,12 +14,6 @@
             <h3 class="display-4">Hi, <%=current_user.name%></h3>
             <p class="lead">Welcome to TAP job placement</p>
             <span class="badge bg-warning"><i class="fas fa-user-lock"></i> #TAP00<%=current_user.id%></span>
-            <% if current_user.varification = true %>
-             <span class="badge bg-secondary"><i class="fas fa-certificate"></i> Verified</span>
-             <%else%>
-             <span class="badge bg-secondary"><i class="fas fa-certificate"></i> Not verified</span>
-
-             <%end%>
             <span class="badge bg-primary text-light">
                 <i class="far fa-building"></i>
               <%=current_user.profile_type%></span>
