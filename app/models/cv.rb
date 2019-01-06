@@ -9,6 +9,14 @@ class Cv < ApplicationRecord
   validates :education_type, presence: true
   validates :gender, presence: true
   validates :ethnicity, presence: true
+  validate :correct_image_type
   has_one_attached :avatar
   belongs_to :user , optional: true
+
+
+  def correct_image_type
+    if avatar.attached? && !avatar.content_type.in?(%w(image/jpeg))
+      errors.add(:file, 'Must be a JPEG file')
+    end
+  end
 end
