@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_04_082829) do
+ActiveRecord::Schema.define(version: 2019_01_06_085005) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 2019_01_04_082829) do
   create_table "cvs", force: :cascade do |t|
     t.string "identification_type"
     t.string "id_passport"
-    t.date "date_of_birth"
     t.string "place_of_birth"
     t.string "disability"
     t.string "education_type"
@@ -68,6 +67,7 @@ ActiveRecord::Schema.define(version: 2019_01_04_082829) do
     t.string "slug"
     t.string "gender"
     t.string "ethnicity"
+    t.date "date_of_birth"
     t.index ["slug"], name: "index_cvs_on_slug", unique: true
     t.index ["user_id"], name: "index_cvs_on_user_id"
   end
