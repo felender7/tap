@@ -19,7 +19,5 @@
 //= require activestorage
 //= require turbolinks
 //= require moment
-//= require fullcalendar
 //= require simplemde
-//= require jquery-ui/widgets/datepicker
 //= require_tree .
