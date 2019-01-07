@@ -1,6 +1,0 @@
-<%if current_user.cvs.exists? %>
-<%= @tap_score + 3 %>
-
-<% else current_user.documents.exists? %>
-<%= @tap_score + 3 + 3 %>
-<%end%>

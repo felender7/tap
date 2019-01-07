@@ -3,7 +3,7 @@
   <div class="shadow-sm p-3 mb-5 bg-light">
       <div class="row">
         <div class="col-md-8 text-muted">
-          <h4><i class="far fa-list-alt"></i> CV Summary</h4>
+          <h4><i class="far fa-list-alt"></i> CV SUMMARY</h4>
         </div>
         <div class="col-md-4">
           <a href="/" class="float-right text-danger"> <i class="fa fa-window-close" data-toggle="tooltip" title="Close"> </i></a>
@@ -103,11 +103,14 @@
     <%= link_to edit_cv_path(@cv) do %>
        <i class="fas fa-edit"></i>
     <%end%>
-       |
-
-    <%=link_to new_document_path, class:'btn btn-success btn-sm' do %>
-      Next - Upload Documents
+    <%if current_user.cvs.empty?%>
+       |<%=button_to new_document_path, class:'btn btn-secondary btn-sm', :disabled => true do %>
+    NEXT - UPLOAD DOCUMENTS
     <%end%>
-
+  <%else%>
+  <%=link_to new_document_path, class:'btn btn-success btn-sm', disabled: false do %>
+    NEXT - UPLOAD DOCUMENTS
+  <%end%>
+<%end%>
   </div>
 </div>

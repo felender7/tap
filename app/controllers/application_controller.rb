@@ -24,9 +24,12 @@ class ApplicationController < ActionController::Base
 
       def calculating_tap_score
         if user_signed_in?
-          @tap_score = 2
+         if current_user.documents.empty?
+           @tap_score = 4
+         else
+           @tap_score = 8
+         end
       end
     end
-
 
   end

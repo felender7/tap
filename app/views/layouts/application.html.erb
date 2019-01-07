@@ -11,4 +11,13 @@
      <%= render 'shared/footer' %>
 
   </body>
+
+
 </html>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('a[disabled=disabled]').click(function(event){
+      event.preventDefault(); // Prevent link from following its href
+  });
+});
+</script>

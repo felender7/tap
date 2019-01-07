@@ -19,9 +19,9 @@
 
           <div class="form-group">
             <%if @identification_type.identification_type =="ID" %>
-            <%= form.select :title,['PROOF OF RESIDENCE', ' IDENTITY DOCUMENT', 'CERTIFICATE'],{prompt: "Select File Name"}, class: 'form-control' %>
+            <%= form.select :title,['PROOF OF RESIDENCE', ' IDENTITY DOCUMENT', 'QUALIFICATIONS'],{prompt: "Select File Name"}, class: 'form-control' %>
             <%else%>
-            <%= form.select :title,['PROOF OF RESIDENCE', ' IDENTITY DOCUMENT', 'CERTIFICATE’, ‘POLICE CLEARANCE'],{prompt: "Select File Name"}, class: 'form-control' %>
+            <%= form.select :title,['PROOF OF RESIDENCE', ' IDENTITY DOCUMENT', 'QUALIFICATIONS, ‘POLICE CLEARANCE'],{prompt: "Select File Name"}, class: 'form-control' %>
             <%end%>
           </div>
 
