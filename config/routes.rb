@@ -1,12 +1,15 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+
+
   get 'summary', to: 'summary#show'
   get 'job_placement',to:'job_placement#index'
   get 'verification', to:'verification#index'
   get 'register_online', to: 'register_online#index'
   get '/about', to: 'about#index'
   get 'find_jobs/index'
+  resources :applicants
   resources :jobs
   resources :company_details
   resources :cvs

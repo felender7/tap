@@ -5,11 +5,9 @@
     <i class="fas fa-tachometer-alt"></i> Dashboard
     <%end%>
     <%if current_user.profile_type == "Individual"%>
-    <%=link_to @cv_show, class:"nav-link" do %>
-      <i class="fas fa-folder-open"></i> My CV <span class="badge bg-success text-light"><%=@cv_count%></span>
-    <%end%>
+    <a class="nav-link" href="/cvs"><i class="fas fa-folder-open"></i> My CV <span class="badge bg-success text-light"> <%=@cv_count%></span> </a>
     <%if current_user.cvs.empty?%>
-      <a class="nav-link disable-links" href="/documents"><i class="fas fa-folder"></i><del> My Documents</del> <span class="badge bg-success text-light"> <%=@document_count%></span> </a>
+      <a class="nav-link disable-links text-muted" href="/documents"><i class="fas fa-folder"></i><del> My Documents</del> <span class="badge bg-success text-light"> <%=@document_count%></span> </a>
     <%else%>
       <a class="nav-link" href="/documents"><i class="fas fa-folder"></i> My Documents <span class="badge bg-success text-light"> <%=@document_count%></span> </a>
     <%end%>
@@ -18,11 +16,10 @@
     <a class="nav-link" href="#"><i class="far fa-meh-rolling-eyes"></i> My Reviews</a>
        <%else%>
      <a class="nav-link" href="/company_details"><i class="far fa-building"></i></i> Company Details</a>
-     <a class="nav-link" href="/jobs/"><i class="fas fa-folder-open"></i>Jobs</a>
-     <a class="nav-link" href="#"><i class="fas fa-users"></i> Applicants</a>
+     <a class="nav-link" href="/jobs/"><i class="fas fa-folder "></i> Jobs <span class="badge bg-success text-light"> <%=@jobs_count%></span></a>
+     <a class="nav-link" href="#"><i class="fas fa-users"></i> Applicants <span class="badge bg-success text-light"> <%=@applicants_count%></span> </a>
      <a class="nav-link" href="#"><i class="far fa-meh-rolling-eyes"></i> My Reviews</a>
     <%end%>
-
     <a class="nav-link" href="/users/edit"><i class="fas fa-cog"></i> Settings</a>
 
   </nav>

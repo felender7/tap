@@ -3,8 +3,9 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :masquerade_user!
-  before_action :get_document_number
+  before_action :get_counts
   before_action :calculating_tap_score
+
 
 
 
@@ -15,13 +16,16 @@ class ApplicationController < ActionController::Base
         devise_parameter_sanitizer.permit(:account_update, keys: [:name, :profile_type, :phone, :varification])
       end
 
-      def get_document_number
+      def get_counts
         if user_signed_in?
           @document_count = current_user.documents.count
           @cv_count = current_user.cvs.count
+          @applicants_count = User.where(:profile_type => "Individual").count
+          @jobs_count = current_user.jobs.count
         end
       end
 
+      #calculating tap score
       def calculating_tap_score
         if user_signed_in?
          if current_user.documents.empty?
@@ -31,5 +35,4 @@ class ApplicationController < ActionController::Base
          end
       end
     end
-
-  end
+end

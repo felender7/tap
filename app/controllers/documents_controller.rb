@@ -93,6 +93,8 @@ class DocumentsController < ApplicationController
 
     # Get get identification type for the current_user
      def get_identification_type
+       if user_signed_in?
        @identification_type = current_user.cvs.find_by(params[:identification_type])
+      end
      end
 end

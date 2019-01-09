@@ -7,7 +7,7 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
-    @jobs = Job.all
+    @jobs = current_user.jobs.order("created_at DESC")
   end
 
   # GET /jobs/1
@@ -17,6 +17,7 @@ class JobsController < ApplicationController
 
   # GET /jobs/new
   def new
+    get_company_logo
     @job = current_user.jobs.build
   end
 
@@ -86,4 +87,10 @@ class JobsController < ApplicationController
           @jobs = current_user.jobs.order("created_at DESC")
        end
      end
+
+     #get company logo
+     def get_company_logo
+       @company_logo = current_user.company_details.find_by(params[:company_logo])
+     end
+
 end

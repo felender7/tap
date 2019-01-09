@@ -5,16 +5,16 @@
       <div class="shadow-sm p-3 mb-5 bg-light">
         <%= render 'errors', job: @job %>
         <div class="form-group">
-          <%= form.text_field :title, class: 'form-control', placeholder:'Title' %>
+          <%= form.text_field :title, class: 'form-control', placeholder:'Job title', required: :required %>
         </div>
 
         <div class="form-group">
-          <%= form.text_field :description, class: 'form-control', placeholder:'Description' %>
+          <%= form.text_area :description, class: 'form-control', placeholder:'Description' , required: :required %>
         </div>
 
         <div class="form-row">
           <div class="form-group col-md-4">
-            <%= form.select :city, ['Johannesburg', 'Pretoria', 'Cape Town','Durban','Port Elizabeth','Bloemfontein','Nelspruit','Kimberley','Polokwane','Pietermaritzburg'] ,{prompt: "Select City"}, {class: "form-control text-light bg-success"}  %>
+            <%= form.select :city, ['Johannesburg', 'Pretoria', 'Cape Town','Durban','Port Elizabeth','Bloemfontein','Nelspruit','Kimberley','Polokwane','Pietermaritzburg'] ,{prompt: "Select City"}, {class: "form-control text-light bg-success"}%>
           </div>
           <div class="form-group col-md-4">
             <%= form.select :work_type, ['Full Time', 'Part Time'] ,{prompt: "Select work type"}, {class: "form-control text-light bg-success"}  %>
@@ -35,11 +35,11 @@
                   <div class="input-group-prepend">
                     <label class="input-group-text" for="inputGroupSelect01">R</label>
                   </div>
-                  <%= form.text_field :salary, class: 'form-control', placeholder:'Example: 5,000.00' %>
+                  <%= form.text_field :salary, class: 'form-control', placeholder:'Example: 5,000.00',  required: :required %>
                 </div>
               </div>
               <div class="form-group col-md-6">
-                <%= form.select  :salary_type, ['Per Hour','Per Day','Per Week','Per Month','Per Year','Negotiable'] ,{prompt: "Select..."}, class:"form-control" %>
+                <%= form.select  :salary_type, ['Per Hour','Per Day','Per Week','Per Month','Per Year','Negotiable'] ,{prompt: "Select..."}, class:"form-control" , required: :required %>
               </div>
             </div>
         </div>
@@ -48,7 +48,7 @@
           <div class="alert alert-info" role="alert">
             Outline the responsibilities of the job
           </div>
-          <%= form.text_area :duties, id: :jobs_duties, class:'form-control fr-view', placeholder:"Duties"  %>
+          <%= form.text_area :duties, id: :jobs_duties, class:'form-control fr-view', placeholder:"Duties" %>
         </div>
 
         <div class="form-group">
@@ -65,7 +65,9 @@
             </div>
           <% end %>
 
-          <%= form.submit class: 'btn btn-primary' %>
+          <%= form.button(type: "submit", class: "btn btn-success" , data: {disable_with:"<i class='fa fa-spinner fa-spin'></i> Saving..." .html_safe }) do %>
+             <i class="fas fa-save"></i> SAVE
+          <% end %>
 
           <% if job.persisted? %>
             <%= link_to "Cancel", job, class: "btn btn-link" %>
@@ -77,12 +79,18 @@
     </div>
 
     <div class="col-lg-4">
-      <%=render'jobs/current_company_logo'%>
+      <%=render'jobs/templates/company_logo'%>
     </div>
   </div> <!--row end !-->
   </div><!--container end !-->
 <% end %>
-<script>
+<!--<script>
   var simplemde = new SimpleMDE({ element: $("#jobs_requirements")[0] });
   var simplemde = new SimpleMDE({ element: $("#jobs_duties")[0] });
+</script>-->
+<script>
+     // Replace the <textarea id="editor1"> with a CKEditor
+     // instance, using default configuration.
+     CKEDITOR.replace( 'jobs_duties' );
+     CKEDITOR.replace( 'jobs_requirements' );
 </script>

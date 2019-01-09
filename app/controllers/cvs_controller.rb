@@ -7,7 +7,7 @@ class CvsController < ApplicationController
   # GET /cvs
   # GET /cvs.json
   def index
-    @cvs = Cv.all.limit(1).order("created_at ASC")
+    @cvs = Cv.all
   end
 
   # GET /cvs/1

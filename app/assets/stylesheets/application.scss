@@ -37,6 +37,7 @@ $btn-success-color          :#fff !important;
   }
 }
 
+
 // Masquerade alert shouldn't have a bottom margin
 body > .alert {
   margin-bottom: 0;
@@ -54,7 +55,9 @@ a:visited {text-decoration: none;}
 a:hover {text-decoration: none;}
 a:active {text-decoration: none;}
 
-
+span a {
+  color: #fff;
+}
 /*Profile card 2*/
 .profile-card-2 .card-img-block{
     float:left;
@@ -154,3 +157,7 @@ a:active {text-decoration: none;}
 
 .text-success {color: #961c56 !important;}
 .disable-links {pointer-events: none;}
+.btn {text-transform: uppercase;}
+ h4{text-transform: uppercase;}
+.jumbotron {border-radius: 1px;}
+.btn {border-radius: 1px;}

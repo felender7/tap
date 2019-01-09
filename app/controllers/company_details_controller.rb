@@ -3,6 +3,7 @@ class CompanyDetailsController < ApplicationController
   before_action :set_company_detail, only: [:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :current_user_company_details, only:[:show]
+  before_action :check_current_profile
 
   # GET /company_details
   # GET /company_details.json
@@ -72,18 +73,27 @@ class CompanyDetailsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_detail_params
-      params.require(:company_detail).permit(:company_name, :registration, :tel, :industry, :company_logo, :user_id)
+      params.require(:company_detail).permit(:company_name, :description,:email, :registration, :tel, :industry, :company_logo,:ck,:bee, :user_id)
     end
 
     # check if the user is authorised to edit,update or destroy the cv
     def correct_user
       @company_detail = current_user.company_details.find_by(params[:friendly])
-          redirect_to company_details_path, notice: "Not authorised to edit this cv" if @company_detail.nil?
+          redirect_to company_details_path, notice: "Not authorised to edit" if @company_detail.nil?
     end
     # check if  cv belongs to the correct user - current user
       def current_user_company_details
         if user_signed_in?
           @company_details = current_user.company_details.order("created_at DESC")
        end
+     end
+
+     # check if  the current user login in can view the page
+     def check_current_profile
+        if user_signed_in?
+          if current_user.profile_type == "Individual"
+            redirect_to root_path , notice:"Not authorised to view this page"
+          end
+        end
      end
 end

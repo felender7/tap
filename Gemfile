@@ -91,4 +91,3 @@ gem 'whenever', require: false
 gem 'stripe'
 gem 'simplemde'
 gem 'momentjs-rails'
-gem 'pickadate-rails'
