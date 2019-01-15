@@ -14,7 +14,6 @@
     <%else%>
     <%= image_tag ("placeholder_avatar.png"), height: 150, width: 150, class: "rounded margin-bottom-20" %>
     <%end%>
-
   </div>
   <div class="col-lg-6">
     <div class="table-responsive-sm">
@@ -68,6 +67,26 @@
              <tr>
                <td><strong>Disability:</strong></td>
                <td><%= @cv.disability %></td>
+             </tr>
+
+             <tr>
+               <td><strong>Job Function:</strong></td>
+               <td><%= @cv.job_function %></td>
+             </tr>
+
+             <tr>
+               <td><strong>Job Industry:</strong></td>
+               <td><%= @cv.job_industry %></td>
+             </tr>
+
+             <tr>
+               <td><strong>Availability:</strong></td>
+               <td><%= @cv.availability %></td>
+             </tr>
+
+             <tr>
+               <td><strong>Salary Range:</strong></td>
+               <td><%= @cv.salary_range %></td>
              </tr>
 
              <tr>

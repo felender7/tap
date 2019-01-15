@@ -68,7 +68,6 @@
           <%= form.button(type: "submit", class: "btn btn-success" , data: {disable_with:"<i class='fa fa-spinner fa-spin'></i> Saving..." .html_safe }) do %>
              <i class="fas fa-save"></i> SAVE
           <% end %>
-
           <% if job.persisted? %>
             <%= link_to "Cancel", job, class: "btn btn-link" %>
           <% else %>
@@ -77,17 +76,15 @@
         </div>
       </div>
     </div>
-
-    <div class="col-lg-4">
-      <%=render'jobs/templates/company_logo'%>
-    </div>
   </div> <!--row end !-->
   </div><!--container end !-->
 <% end %>
+
 <!--<script>
   var simplemde = new SimpleMDE({ element: $("#jobs_requirements")[0] });
   var simplemde = new SimpleMDE({ element: $("#jobs_duties")[0] });
 </script>-->
+
 <script>
      // Replace the <textarea id="editor1"> with a CKEditor
      // instance, using default configuration.

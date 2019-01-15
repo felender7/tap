@@ -2,7 +2,7 @@ class CompanyDetail < ApplicationRecord
   extend FriendlyId
   friendly_id :company_name, use: :slugged
 
-  belongs_to :user , optional: true
+
   has_one_attached :company_logo
   has_one_attached :ck
   has_one_attached :bee
@@ -15,7 +15,9 @@ class CompanyDetail < ApplicationRecord
   validate  :correct_image_type_company_logo
   validate  :correct_file_type_ck
   validate  :correct_file_type_bee
-  has_many :jobs, dependent: :destroy
+  belongs_to :user , optional: true
+  has_many   :jobs
+
 
    # check if the logo is jpeg
   def correct_image_type_company_logo

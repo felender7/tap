@@ -4,8 +4,7 @@ class DocumentsController < ApplicationController
   before_action :correct_user_for_docs, only: [:edit, :update, :destroy]
   before_action :current_user_documents, only:[:show]
   before_action :get_identification_type
-
-
+  before_action :check_current_profile
   # GET /documents
   # GET /documents.json
   def index
@@ -97,4 +96,13 @@ class DocumentsController < ApplicationController
        @identification_type = current_user.cvs.find_by(params[:identification_type])
       end
      end
+
+     # check if  the current user login in can view the page
+       def check_current_profile
+          if user_signed_in?
+            if current_user.profile_type == "Business"
+              redirect_to root_path , notice:"Not authorised to view this page"
+            end
+          end
+       end
 end

@@ -1,0 +1,143 @@
+<div class="container-fluid">
+  <div class="shadow-sm p-3 mb-5 bg-light">
+      <div class="row">
+        <div class="col-md-8 text-muted">
+          <h4><i class="far fa-list-alt"></i> Applicant - <%= @user.name %> </h4>
+        </div>
+        <div class="col-md-4">
+          <a href="/users" class="float-right text-danger"> <i class="fa fa-window-close" data-toggle="tooltip" title="Close"> </i></a>
+        </div>
+      </div>
+  </div>
+
+
+  <div class="shadow-sm p-3 mb-5 bg-white">
+  <div class="row">
+  <%@display_cv.each do |display_cv| %>
+    <div class="col-lg-2">
+      <% if display_cv.avatar.attached? %>
+        <%= image_tag display_cv.avatar.variant(resize:"150x150"), class:"rounded margin-bottom-20" %>
+      <%else%>
+      <%= image_tag ("placeholder_avatar.png"), height: 150, width: 150, class: "rounded margin-bottom-20" %>
+      <%end%>
+
+    </div>
+    <div class="col-lg-8">
+      <div class="table-responsive-sm">
+          <table class="table table-sm">
+          <strong><p class="text-success">CURRICULUM VITEA</p></strong>
+            <tbody>
+              <tr class="d-flex"></tr>
+           </tbody>
+
+              <tr>
+                <td><strong>Full Name:</strong></td>
+                <td><%=@user.name%></td>
+              </tr>
+              <tr>
+                <td><strong>Email:</strong></td>
+                <td><%=@user.email%></td>
+              </tr>
+
+              <tr>
+                <td><strong>ID/Passport:</strong></td>
+                <td>  <%= display_cv.id_passport%>
+                  <%if display_cv.identification_type == "ID" %>
+                    <small class="badge bg-success text-light"><i class="fas fa-user"></i> ID</small>
+                    <%else%>
+                    <small class="badge bg-success text-light"><i class="fas fa-user"></i> Passport</small>
+
+                    <%end%>
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>Date of Birth:</strong></td>
+                <td><%= display_cv.date_of_birth %></td>
+              </tr>
+
+               <tr>
+                 <td><strong>Gender:</strong></td>
+                 <td><%= display_cv.gender %></td>
+               </tr>
+
+               <tr>
+                 <td><strong>Ethnicity:</strong></td>
+                 <td><%= display_cv.ethnicity %></td>
+               </tr>
+
+               <tr>
+                 <td><strong>Place of Birth:</strong></td>
+                 <td><%= display_cv.place_of_birth %></td>
+               </tr>
+
+               <tr>
+                 <td><strong>Disability:</strong></td>
+                 <td><%= display_cv.disability %></td>
+               </tr>
+
+               <tr>
+                 <td><strong>Job Function:</strong></td>
+                 <td><%= display_cv.job_function %></td>
+               </tr>
+
+               <tr>
+                 <td><strong>Job Industry:</strong></td>
+                 <td><%= display_cv.job_industry %></td>
+               </tr>
+
+               <tr>
+                 <td><strong>Availability:</strong></td>
+                 <td><%= display_cv.availability %></td>
+               </tr>
+
+               <tr>
+                 <td><strong>Salary Range:</strong></td>
+                 <td><%= display_cv.salary_range %></td>
+               </tr>
+
+               <tr>
+                 <td><strong>Education:</strong></td>
+                 <td><%= display_cv.education_type %></td>
+               </tr>
+
+               <tr>
+                 <td><strong>Verification:</strong></td>
+                 <td><%if @user.varification == true %>
+                  <span class="badge bg-danger text-light"><i class="fas fa-certificate"></i> verified</span>
+                  <%else%>
+                  <span class="badge bg-danger text-light"><i class="fas fa-certificate"></i> Not verified </span>
+                   <%end%>
+                 </td>
+               </tr>
+            <%end%>
+          </table>
+
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <strong><p class="text-success">DOCUMENTS</p></strong>
+
+              <tbody>
+                <% @display_documents.each do |display_document| %>
+                  <%= content_tag :tr, id: dom_id(display_document), class: dom_class(display_document) do %>
+                  <tr class="active">
+                    <td>
+                      <%= link_to display_document do %><i class="far fa-file-pdf text-danger"></i> <%= display_document.title %></td>
+                     <%end%>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><span class="badge bg-success " ><%= link_to display_document.file, download:'' do %>
+                      <i class="fas fa-file-download text-light" data-toggle="tooltip" title="Download" ></i> DOWNLOAD</span>
+                      <%end%>
+                      </td>
+                      <% end %>
+                  <% end %>
+                <tr>
+              </tbody>
+            </table>
+          </div>
+      </div>
+      </div>
+      </div>
+      </div>

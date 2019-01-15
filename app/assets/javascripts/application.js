@@ -25,7 +25,7 @@
 
 $(function(){
       //hide alert after 5 second
-      $('.alert').delay( 5000 ).fadeOut( 1000 );
+      $('.alert-primary').delay( 5000 ).fadeOut( 1000 );
       //Show tooltip
       $('[data-toggle="tooltip"]').tooltip();
 

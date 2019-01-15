@@ -91,3 +91,6 @@ gem 'whenever', require: false
 gem 'stripe'
 gem 'simplemde'
 gem 'momentjs-rails'
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+gem 'will_paginate-bootstrap4'

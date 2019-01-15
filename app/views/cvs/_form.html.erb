@@ -5,7 +5,7 @@
     <div class="shadow-sm p-3 mb-5 bg-light">
       <%= render 'errors', cv: @cv %>
       <div class="form-row">
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-6">
           <h4><%=current_user.name%></h4>
         </div>
       </div>
@@ -20,7 +20,7 @@
       </div>
 
       <div class="form-group">
-        <%=form.text_field :id_passport, class:'form-control', placeholder:'ID/Passport'%>
+        <%=form.text_field :id_passport, class:'form-control', placeholder:'ID/Passport',required: :required%>
       </div>
 
       <div class="form-row">
@@ -40,6 +40,26 @@
 
         <div class="form-group col-md-6">
           <%= form.date_field :date_of_birth, class: 'form-control'%>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <%= form.select :job_function, ['Accounting, Auditing', 'Admin, Office Support & Services','Agriculture, Forestry, Environmental & Fishing', 'Banking, Finance, Insurance & Stockbroking', 'Chemical , Petrochemical, Oil & Gas','Construction, Design, Architecture & Property','Education & Training', 'FMCG, Retail, Wholesale & Supply Chain','General Management','Government & NGO','Health, Fitness, Medical & Optometry','Hospitality, Hotel, Catering, Tourism & Travel','Human Resources & Recruitment','IT & Telecommunications','Legal','Matriculants/Graduate/No Experience','Media, Advertising, PR, Publishing & Marketing','Mining','R&D, Science & Scientific Research','Sales & Purchasing','SHEQ & Security Work','Textile/Clothing','Transport, Logistics & Freight'], { prompt:"Select Job Function"}, class: 'form-control' %>
+        </div>
+
+        <div class="form-group col-md-6">
+          <%= form.select :job_industry,['[All]', 'Advertising, Communication & PR','Agriculture, Forestry & Fishing','Armed Forces', 'Art, Culture, Entertainment & Sport','Auditing/Accounting','Automotive Sector','Aviation & Aerospace','Banking','Building & Construction','Call Centre Industry','Chemical, Petrochemical, Oil & Gas','Conservation & Environment','Consulting','Distribution, Transport & Logistics','Education & Training','Electricity, Energy & Water Supply','Engineering','Financial Services', 'Fishing','FMCG & Supply Management','Food & Beverages','Freight, Import & Export','Government','Handcraft & Furniture','Health & Fitness','Hospitality & Catering','HR Services, Recruitment & Selection','Insurances','IT & Internet','Legal','Manufacturing','Media, Audiovisual & Publishing','Medical Technology','Medical, Health & Social Care','Mining & Quarrying','Non-Profit & Voluntary Sector','Office Automation','Other Sectors & Industries','Pharmaceutical Sector','Property & Real Estate','Public Administration','Public Administration & Defence','Public Services','Publishing, Printing & Reproduction','Recreational, Cultural & Sporting Activities','Scientific, Research & Development','Steel Industry','Telecommunication Services','Textiles, Clothing, Leather & Fashion','Travel & Tourism','Wholesale & Retail Trade'], {prompt:"Select preferred job industry"},class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <%= form.select :salary_range,['0 - 50K Annually R', '50 - 100K Annually R','100 - 150K Annually R','150 - 200K Annually R','200 - 250K Annually R','250 - 300K Annually R','300 - 350K Annually R','350 - 400K Annually R','400 - 450K Annually R','450 - 500K Annually R','500 - 600k Annually R','600 - 700k Annually R','700 - 800k Annually R','800 - 900k Annually R','900K - 1 Million Annually R','1 - 1.25 Million Annually R','1.25 - 1.5 Million Annually R','1.5 - 1.75 Million Annually R','1.75 - 2 Million Annually R','2 Million+ Annually R'], {prompt:"Select preferred salary range"},class: 'form-control' %>
+        </div>
+
+        <div class="form-group col-md-6">
+          <%= form.select :availability,['Immediate', '7 days','2 weeks','1 month','2 months','More than 2 months'], {prompt:"Select availability"},class: 'form-control' %>
         </div>
       </div>
 
@@ -65,7 +85,7 @@
         <small id="passwordHelpBlock" class="form-text text-danger">
           Upload Picture - 128 x 128px
         </small>
-        <%= form.file_field :avatar, class: 'form-control-file', accept: 'image/jpeg', direct_upload: true %>
+        <%= form.file_field :avatar, class: 'form-control-file', accept: 'image/jpeg', direct_upload: true  %>
       </div>
 
       <hr>
@@ -75,7 +95,6 @@
             <%= link_to 'Destroy', cv, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
           </div>
         <% end %>
-
 
         <%= form.button(type: "submit", class: "btn btn-success" , data: {disable_with:"<i class='fa fa-spinner fa-spin'></i> Saving..." .html_safe }) do %>
            <i class="fas fa-save"></i> SAVE
@@ -88,7 +107,6 @@
       </div>
     </div>
   </div>
-
   <div class="col-lg-4">
     <%=render'shared/tracking'%>
   </div>

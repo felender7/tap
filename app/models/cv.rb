@@ -9,6 +9,10 @@ class Cv < ApplicationRecord
   validates :education_type, presence: true
   validates :gender, presence: true
   validates :ethnicity, presence: true
+  validates :job_function, presence: true
+  validates :job_industry, presence: true
+  validates :availability, presence: true
+  validates :salary_range, presence: true
   validate :correct_image_type
   has_one_attached :avatar
   belongs_to :user , optional: true

@@ -1,5 +1,12 @@
 class FindJobsController < ApplicationController
+
   def index
-    @jobs = Job.all
+    @find_jobs = Job.all
   end
+
+
+  def show
+
+  end
+
 end

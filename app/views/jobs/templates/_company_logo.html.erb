@@ -1,6 +1,0 @@
-<% if @company_logo.company_logo.attached? %>
-  <%= image_tag @company_logo.company_logo.variant(resize:"250x250"), class:"rounded margin-bottom-20 thumbnail" %>
-<%else%>
-<%= image_tag('placeholder_avatar.png', height: 250, width: 250, class: "rounded margin-bottom-20") %> <br>
-<small style="margin-left: 60px"><a href="#">Need a logo?</a> </small>
-<%end%>

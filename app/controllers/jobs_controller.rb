@@ -1,13 +1,14 @@
 class JobsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_job, only: [:show, :edit, :update, :destroy]
+  before_action :set_job, only:[:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :current_user_jobs, only:[:show]
+  before_action :get_company_details
 
   # GET /jobs
   # GET /jobs.json
   def index
-    @jobs = current_user.jobs.order("created_at DESC")
+    @jobs = Job.all.order("created_at DESC")
   end
 
   # GET /jobs/1
@@ -17,7 +18,6 @@ class JobsController < ApplicationController
 
   # GET /jobs/new
   def new
-    get_company_logo
     @job = current_user.jobs.build
   end
 
@@ -29,7 +29,6 @@ class JobsController < ApplicationController
   # POST /jobs.json
   def create
     @job = current_user.jobs.build(job_params)
-
     respond_to do |format|
       if @job.save
         format.html { redirect_to @job, notice: 'Job was successfully created.' }
@@ -88,9 +87,21 @@ class JobsController < ApplicationController
        end
      end
 
-     #get company logo
-     def get_company_logo
-       @company_logo = current_user.company_details.find_by(params[:company_logo])
+     #get company details
+     def get_company_details
+       if user_signed_in?
+         @company_name = current_user.company_details.find_by(params[:company_name])
+         @profile_type = current_user.profile_type
+      end
      end
+
+     # check if  the current user login in can view the page
+     #def check_current_profile
+        #if user_signed_in?
+          #if current_user.profile_type == "Individual"
+            #redirect_to root_path , notice:"Not authorised to view this page"
+          #end
+        #end
+     #end
 
 end
