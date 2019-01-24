@@ -38,19 +38,19 @@
                 <td><strong>Email:</strong></td>
                 <td><%=@user.email%></td>
               </tr>
-
               <tr>
                 <td><strong>ID/Passport:</strong></td>
                 <td>  <%= display_cv.id_passport%>
                   <%if display_cv.identification_type == "ID" %>
-                    <small class="badge bg-success text-light"><i class="fas fa-user"></i> ID</small>
+                    <small class="badge bg-success text-light"><i class="fas fa-user"></i> ID|
+                       <small>South African Citizen</small> </small>
                     <%else%>
-                    <small class="badge bg-success text-light"><i class="fas fa-user"></i> Passport</small>
-
+                    <small class="badge bg-success text-light"><i class="fas fa-user"></i> Passport |
+                      <small>Non South African Citizen</small>
+                    </small>
                     <%end%>
                 </td>
               </tr>
-
               <tr>
                 <td><strong>Date of Birth:</strong></td>
                 <td><%= display_cv.date_of_birth %></td>
@@ -104,7 +104,7 @@
                <tr>
                  <td><strong>Verification:</strong></td>
                  <td><%if @user.varification == true %>
-                  <span class="badge bg-danger text-light"><i class="fas fa-certificate"></i> verified</span>
+                  <span class="badge bg-success text-light"><i class="fas fa-check"></i> Verified</span>
                   <%else%>
                   <span class="badge bg-danger text-light"><i class="fas fa-certificate"></i> Not verified </span>
                    <%end%>
@@ -122,14 +122,14 @@
                   <%= content_tag :tr, id: dom_id(display_document), class: dom_class(display_document) do %>
                   <tr class="active">
                     <td>
-                      <%= link_to display_document do %><i class="far fa-file-pdf text-danger"></i> <%= display_document.title %></td>
-                     <%end%>
+                      <i class="far fa-file-pdf text-danger"></i> <%= display_document.title %></td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td><span class="badge bg-success " ><%= link_to display_document.file, download:'' do %>
                       <i class="fas fa-file-download text-light" data-toggle="tooltip" title="Download" ></i> DOWNLOAD</span>
-                      <%end%>
+                      <%end%> | <small class="text-muted">
+                          <%=(display_document.file.byte_size)/ 1000.0%> bytes</small>
                       </td>
                       <% end %>
                   <% end %>

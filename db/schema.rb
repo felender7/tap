@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_11_102303) do
+ActiveRecord::Schema.define(version: 2019_01_24_181659) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 2019_01_11_102303) do
     t.string "job_industry"
     t.string "availability"
     t.string "salary_range"
+    t.string "phone"
     t.index ["slug"], name: "index_cvs_on_slug", unique: true
     t.index ["user_id"], name: "index_cvs_on_user_id"
   end
@@ -157,7 +158,6 @@ ActiveRecord::Schema.define(version: 2019_01_11_102303) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "profile_type"
-    t.string "phone"
     t.boolean "varification", default: false
     t.integer "tap_score"
     t.string "slug"

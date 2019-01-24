@@ -20,6 +20,7 @@
 //= require turbolinks
 //= require moment
 //= require simplemde
+//= require typeahead.bundle
 //= require_tree .
 
 
@@ -28,5 +29,4 @@ $(function(){
       $('.alert-primary').delay( 5000 ).fadeOut( 1000 );
       //Show tooltip
       $('[data-toggle="tooltip"]').tooltip();
-
 });

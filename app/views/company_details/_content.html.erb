@@ -2,7 +2,7 @@
 
 <% if current_user.company_details.empty? %>
   <h3 class="display-4">Hi,<%=current_user.name%></h3>
-  <p class="lead">you havent added company details yet! Click here to <a href="/company_details/new">get started</a></p>
+  <p class="lead">You haven't added company details yet! Click here to <a href="/company_details/new">get started</a></p>
 <%else%>
 
 <% @company_details.each do |company_detail| %>

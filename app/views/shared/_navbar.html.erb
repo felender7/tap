@@ -18,7 +18,10 @@
 
       <ul class="navbar-nav">
         <% if user_signed_in? %>
-        <li class="nav-item"><%= link_to "What's New", announcements_path, class: "nav-link #{unread_announcements(current_user)}" %></li>
+        <li class="nav-item"><%= link_to users_path, class: "nav-link btn btn-success my-2 my-sm-0"  do %>
+          FIND SERVICE PROVIDER <span class="badge bg-light text-dark"><%=@service_provider_count%></span>
+           <%end%>
+        </li>
         <li class="nav-item">
           <%= link_to notifications_path, class: "nav-link" do %>
             <span><i class="fas fa-bell"></i></span>

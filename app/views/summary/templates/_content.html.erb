@@ -36,9 +36,11 @@
               <td><strong>ID/Passport:</strong></td>
               <td>  <%= @cv.id_passport%>
                 <%if @cv.identification_type == "ID" %>
-                  <small class="badge bg-success text-light"><i class="fas fa-user"></i> ID</small>
+                  <small class="badge bg-success text-light"><i class="fas fa-user"></i> ID|</small>
+                   <small>South African Citizen</small>
                   <%else%>
-                  <small class="badge bg-success text-light"><i class="fas fa-user"></i> Passport</small>
+                  <small class="badge bg-success text-light"><i class="fas fa-user"></i> Passport|</small>
+                  <small>Non South African Citizen</small>
 
                   <%end%>
               </td>
@@ -123,7 +125,7 @@
                   <td></td>
                   <td><span class="badge bg-success " ><%= link_to document.file, download:'' do %>
                     <i class="fas fa-file-download text-light" data-toggle="tooltip" title="Download" ></i> DOWNLOAD</span>
-                    <%end%>
+                    <%end%> | <small class="text-muted"><%=document.file.byte_size%> KB</small>
                     </td>
                     <% end %>
                 <% end %>

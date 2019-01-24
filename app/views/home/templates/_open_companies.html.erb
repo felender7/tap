@@ -3,7 +3,7 @@
    <li class="list-inline-item">
      <% if company_detail.company_logo.attached? %>
      <%=link_to  company_detail do %>
-       <%= image_tag company_detail.company_logo.variant(resize:"130x130"), class:"rounded margin-bottom-20", style:"150x150" %>
+       <%= image_tag company_detail.company_logo.variant(resize:"130x130"), height: 130, width: 130,class:"rounded margin-bottom-20" %>
       <%end%>
      <%else%>
      <%=link_to company_detail do %>

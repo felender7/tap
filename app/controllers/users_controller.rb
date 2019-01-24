@@ -1,9 +1,13 @@
 class UsersController < ApplicationController
   before_action :display_user_content, only:[:show]
-  before_action :check_current_profile
-  def index
-    @users = User.where(profile_type: "Individual").order("created_at DESC")
+  before_action :authenticate_user!, only:[:show]
 
+  def index
+    @users = if params[:term_user].present?
+        User.search(params[:term_user])
+      else
+        User.where(profile_type: "Individual").order("created_at DESC")
+      end
   end
 
   def show

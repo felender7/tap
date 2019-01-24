@@ -1,5 +1,6 @@
-<% if @profile_type == "Individual"%>
+
+<%if current_user.profile_type == "Individual"%>
 <%=render'jobs/templates/individual'%>
-<%elsif @profile_type == "Business" %>
+  <%else%>
 <%=render'jobs/templates/company'%>
 <%end%>

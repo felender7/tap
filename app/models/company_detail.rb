@@ -16,7 +16,7 @@ class CompanyDetail < ApplicationRecord
   validate  :correct_file_type_ck
   validate  :correct_file_type_bee
   belongs_to :user , optional: true
-  has_many   :jobs
+  has_many :jobs, dependent: :destroy
 
 
    # check if the logo is jpeg

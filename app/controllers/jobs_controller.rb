@@ -3,7 +3,6 @@ class JobsController < ApplicationController
   before_action :set_job, only:[:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :current_user_jobs, only:[:show]
-  before_action :get_company_details
 
   # GET /jobs
   # GET /jobs.json
@@ -14,6 +13,7 @@ class JobsController < ApplicationController
   # GET /jobs/1
   # GET /jobs/1.json
   def show
+
   end
 
   # GET /jobs/new
@@ -72,7 +72,7 @@ class JobsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
-      params.require(:job).permit(:title, :description, :city, :work_type, :contract_type, :user_id,:company_detail_id, :duties, :salary, :salary_type, :requirements, :slug)
+      params.require(:job).permit(:title, :description, :city, :work_type, :contract_type, :company_detail_id, :duties, :salary, :salary_type, :requirements, :slug)
     end
 
     # check if the user is authorised to edit,update or destroy the cv
@@ -87,21 +87,9 @@ class JobsController < ApplicationController
        end
      end
 
-     #get company details
-     def get_company_details
-       if user_signed_in?
-         @company_name = current_user.company_details.find_by(params[:company_name])
-         @profile_type = current_user.profile_type
-      end
+     def autocomplete
+       render json: Job.search(params[:term_job], autocomplete: false, limit: 10).map do |job|
+         { title: job.title, value: job.id }
+       end
      end
-
-     # check if  the current user login in can view the page
-     #def check_current_profile
-        #if user_signed_in?
-          #if current_user.profile_type == "Individual"
-            #redirect_to root_path , notice:"Not authorised to view this page"
-          #end
-        #end
-     #end
-
 end

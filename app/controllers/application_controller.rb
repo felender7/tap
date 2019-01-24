@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
   before_action :calculating_tap_score
 
   protected
-
       def configure_permitted_parameters
         devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:profile_type, :phone,:varification, :slug])
         devise_parameter_sanitizer.permit(:account_update, keys: [:name, :profile_type, :phone, :varification, :slug])
@@ -15,13 +14,14 @@ class ApplicationController < ActionController::Base
 
       def get_counts
         if user_signed_in?
+          @service_provider_count = User.where(profile_type: "Individual").count
           @document_count = current_user.documents.count
           @cv_count = current_user.cvs.count
           @applicants_count = User.where(:profile_type => "Individual").count
           if current_user.profile_type == "Individual"
             @jobs_count = Job.all.count
           else
-            @jobs_count = current_user.jobs.count
+            @jobs_count = Job.where(:user_id => current_user).count
           end
         end
       end

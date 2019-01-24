@@ -3,23 +3,33 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
 
 
-  get 'users/index'
+
+
+  get 'service_provider', to: 'service_provider#index' ,   via: 'get'
+  get '/service_provider/:id', to: 'service_provider#show' ,   via: 'get'
   get 'summary', to: 'summary#show'
   get 'job_placement',to:'job_placement#index'
   get 'verification', to:'verification#index'
   get 'register_online', to: 'register_online#index'
   get '/about', to: 'about#index'
-  get 'find_jobs', to:'find_jobs#index'
   match '/users',   to: 'users#index',   via: 'get'
   match '/users/:id',     to: 'users#show',       via: 'get'
+  resources :find_jobs do
+   collection do
+     get :autocomplete
+   end
+ end
 
-  resources :users, :only =>[:show]
+  resources :users, :only =>[:show] do
+    collection do
+      get :autocomplete
+    end
+  end
   resources :jobs
   resources :company_details
   resources :cvs
   resources :charges
   resources :documents
-  get'upload_documents/index'
   namespace :admin do
       resources :users
       resources :announcements

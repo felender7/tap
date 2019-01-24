@@ -1,4 +1,3 @@
-
 <div class="container-fluid">
   <div class="shadow-sm p-3 mb-5 bg-light">
       <div class="row">
@@ -12,10 +11,9 @@
   </div>
 <div class="shadow-sm p-3 mb-5 bg-white">
 <div class="row">
-
   <div class="col-lg-2">
     <% if @cv.avatar.attached? %>
-      <%= image_tag @cv.avatar.variant(resize:"150x150"), class:"rounded margin-bottom-20" %>
+       <%= image_tag(@cv.thumbnail, height: 150, width: 150, class:"rounded margin-bottom-20 img-thumbnail") if @cv.thumbnail %>
     <%else%>
     <%= image_tag ("placeholder_avatar.png"), height: 150, width: 150, class: "rounded margin-bottom-20" %>
     <%end%>
@@ -30,7 +28,7 @@
       <%if current_user && @cv.user == current_user%>
             <tr>
               <td><strong>Full Name:</strong></td>
-              <td><%=current_user.name%></td>
+              <td><%=current_user.name.titlecase%></td>
             </tr>
             <tr>
               <td><strong>Email:</strong></td>
@@ -38,17 +36,28 @@
             </tr>
 
             <tr>
+              <td><strong>Phone:</strong></td>
+              <td><%=@cv.phone%></td>
+            </tr>
+
+            <tr>
               <td><strong>ID/Passport:</strong></td>
               <td>  <%= @cv.id_passport%>
                 <%if @cv.identification_type == "ID" %>
-                  <small class="badge bg-success text-light"><i class="fas fa-user"></i> ID <br>
+                  <small class="badge bg-success text-light"><i class="fas fa-user"></i> ID |
                      <small>South African Citizen</small>
                   </small>
                   <%else%>
-                  <small class="badge bg-success text-light"><i class="fas fa-user"></i> Passport</small>
+                  <small class="badge bg-success text-light"><i class="fas fa-user"></i> Passport |
+                     <small>Non South African Citizen</small>
+                  </small>
 
                   <%end%>
               </td>
+            </tr>
+            <tr>
+              <td><strong>Tap Number:</strong></td>
+              <td><span class="badge bg-success text-light"><i class="fas fa-user-lock"></i> #TAP00<%=current_user.id%></span></td>
             </tr>
 
             <tr>
@@ -100,13 +109,12 @@
                <td><strong>Education:</strong></td>
                <td><%= @cv.education_type %></td>
              </tr>
-
              <tr>
                <td><strong>Verified:</strong></td>
-               <td><%if @current_user.varification == true %>
-                <span class="badge bg-danger text-light"><i class="fas fa-certificate"></i> verified</span>
+               <td><%if current_user.varification == true %>
+                <span class="badge bg-warning text-light"><i class="fas fa-check-double"></i> verified</span>
                 <%else%>
-                <span class="badge bg-danger text-light"><i class="fas fa-certificate"></i> Not verified </span>
+                <span class="badge bg-danger text-light"><i class="fas fa-times-circle"></i></i> Not verified </span>
                  <%end%>
                </td>
              </tr>
@@ -120,6 +128,7 @@
   </div>
 </div>
     <hr>
+    <%if current_user == current_user%>
     <%= link_to edit_cv_path(@cv) do %>
        <i class="fas fa-edit"></i>
     <%end%>
@@ -133,4 +142,5 @@
   <%end%>
 <%end%>
   </div>
+  <%end%>
 </div>

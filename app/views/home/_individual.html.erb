@@ -5,7 +5,7 @@
           <div class="container">
         <% if current_user.cvs.empty? %>
           <h3 class="display-4">Hi, <%=current_user.name%></h3>
-          <p class="lead">you haven't created a cv yet!</p>
+          <p class="lead">You haven't created a cv yet!</p>
           <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 40%"></div>
                <%=link_to new_cv_path , class:'btn btn-warning' do %>
                🚀 GET STARTED

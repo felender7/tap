@@ -1,9 +1,12 @@
 class CvsController < ApplicationController
+
   before_action :authenticate_user!
   before_action :set_cv, only: [:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :current_user_cvs, only:[:show]
   before_action :check_current_profile
+
+
   # GET /cvs
   # GET /cvs.json
   def index
@@ -72,7 +75,7 @@ class CvsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cv_params
-      params.require(:cv).permit(:identification_type,:user_id,:id_passport,:gender, :ethnicity ,:date_of_birth, :place_of_birth,:disability, :education_type, :avatar,:job_function, :job_industry, :availability, :salary_range )
+      params.require(:cv).permit(:phone, :identification_type,:user_id,:id_passport,:gender, :ethnicity ,:date_of_birth, :place_of_birth,:disability, :education_type, :avatar,:job_function, :job_industry, :availability, :salary_range )
     end
     # check if the user is authorised to edit,update or destroy the cv
     def correct_user
