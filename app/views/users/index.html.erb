@@ -19,12 +19,21 @@
              <a href="#">Follow</a>
            </div>
            <span class="d-block">   <%user.cvs.each do|cv_details| %>
-            <small class="text-muted"><%=cv_details.gender%> | <%=cv_details.job_industry%></small> <%end%></span>
+            <small class="text-muted">
+              <%if cv_details.gender == "Male"%>
+            <i class="fas fa-male"></i>  <%=cv_details.gender%>
+              <%else%>
+              <i class="fas fa-female"></i>  <%=cv_details.gender%>
+              <%end%>
+             | <%=cv_details.job_industry%></small> <%end%></span>
             <%if user.varification == true %>
              <span class="badge bg-warning text-light"><i class="fas fa-check"></i> Verified</span>
              <%else%>
              <span class="badge bg-danger text-light"><i class="fas fa-certificate"></i> Not verified </span>
               <%end%>
+
+              <span class="badge bg-success text-light"><i class="fas fa-certificate"></i> Tapscore - 8/10</span> <br>
+              <span class="badge bg-success text-light"><i class="fas fa-clock"></i> updated: <%=time_ago_in_words(user.updated_at) +" ago" %></span>
          </div>
        </div>
 
