@@ -13,9 +13,9 @@ class User < ApplicationRecord
     has_many :documents, dependent: :destroy
     has_many :company_details, dependent: :destroy
     has_many :jobs
-    searchkick word_start: [:name, :email]
+    #searchkick word_start: [:name, :email]
 
-    def search_data
-      {name: name, email: email}
-    end
+    #def search_data
+      #{name: name, email: email}
+    #end
 end
