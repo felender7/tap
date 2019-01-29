@@ -25,4 +25,6 @@
 
        <%end%><!--end loop-->
      </div>
+     <div class="center"><%= will_paginate @get_jobs, list_classes: %w(pagination justify-content-end),renderer: WillPaginate::ActionView::BootstrapLinkRenderer %></div>
+
 </div> <!--end container-->

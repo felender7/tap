@@ -3,8 +3,7 @@
       <div class="row">
         <div class="col-md-8 text-light">
           <h4><i class="far fa-list-alt"></i> COMPANY PROFILE</h4>
-          <%= @company_detail.company_name.upcase %> <br>
-          <small><%= @company_detail.registration %> </small> <br>
+          <%= @company_detail.company_name.upcase %> - <%= @company_detail.registration %><br>
           <small class="p-1 bg-secondary"><%= @company_detail.industry.upcase %></small>
         </div>
         <div class="col-md-4">
@@ -15,7 +14,7 @@
 
 <div class="card">
   <div class="card-body">
-    <h5 class="card-title">About us</h5>
+    <h5 class="card-title text-success ">About us</h5>
     <p class="card-text text-muted text-justify"><%= @company_detail.description.capitalize %></p>
   </div>
 </div>
@@ -23,19 +22,19 @@
 <div class="row">
   <div class="col-8">
     <div class="card">
-      <div class="card-header">
+      <div class="card-header text-success">
         Contacts
       </div>
-      <div class="card-body">
-        <p class="card-text"><i class="fas fa-phone"></i> <%= @company_detail.email %></p>
-        <p class="card-text"><i class="fas fa-mail-box"></i> <%= @company_detail.tel %></p>
+      <div class="card-body text-muted">
+        <p class="card-text"><i class="fas fa-envelope-square"></i> <%= @company_detail.email %></p>
+        <p class="card-text"><i class="fas fa-phone-square"> </i>  <%= @company_detail.tel %></p>
       </div>
     </div>
   </div>
 
   <div class="col">
     <div class="card">
-      <div class="card-header">
+      <div class="card-header text-success">
         Recent Jobs
       </div>
       <div class="card-body">

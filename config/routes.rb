@@ -43,7 +43,7 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
 
-  devise_for :users,:path_prefix => 'd'
+  devise_for :users,:path_prefix => 'd', controllers: { confirmations: 'confirmations' }
   root to: 'home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

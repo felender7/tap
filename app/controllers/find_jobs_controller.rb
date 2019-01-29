@@ -5,10 +5,9 @@ class FindJobsController < ApplicationController
       @get_jobs = if params[:term_job].present?
           Job.search(params[:term_job])
         else
-          Job.all
+          Job.paginate(:page => params[:page], :per_page => 5).order("created_at DESC")
         end
     end
-
 
     # GET /jobs/1
     # GET /jobs/1.json
