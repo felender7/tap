@@ -120,14 +120,6 @@ GEM
     devise_masquerade (0.6.5)
       devise (>= 2.1.0)
       railties (>= 3.0)
-    elasticsearch (6.1.0)
-      elasticsearch-api (= 6.1.0)
-      elasticsearch-transport (= 6.1.0)
-    elasticsearch-api (6.1.0)
-      multi_json
-    elasticsearch-transport (6.1.0)
-      faraday
-      multi_json
     erubi (1.7.1)
     execjs (2.7.0)
     faraday (0.15.3)
@@ -279,10 +271,6 @@ GEM
     sassc (2.0.0)
       ffi (~> 1.9.6)
       rake
-    searchkick (3.1.2)
-      activemodel (>= 4.2)
-      elasticsearch (>= 5)
-      hashie
     selectize-rails (0.12.5)
     selenium-webdriver (3.141.0)
       childprocess (~> 0.5)
@@ -315,10 +303,6 @@ GEM
     turbolinks (5.2.0)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    twitter-typeahead-rails (0.11.1)
-      actionpack (>= 3.1)
-      jquery-rails
-      railties (>= 3.1)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uglifier (4.1.19)
@@ -378,7 +362,6 @@ DEPENDENCIES
   puma (~> 3.11)
   rails (~> 5.2.1)
   sass-rails (~> 5.0)
-  searchkick
   selenium-webdriver
   sidekiq (~> 5.1, >= 5.1.3)
   simplemde
@@ -388,7 +371,6 @@ DEPENDENCIES
   sqlite3
   stripe
   turbolinks (~> 5)
-  twitter-typeahead-rails
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
