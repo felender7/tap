@@ -13,7 +13,7 @@ class JobsController < ApplicationController
   # GET /jobs/1
   # GET /jobs/1.json
   def show
-
+    display_user_content
   end
 
   # GET /jobs/new
@@ -28,7 +28,9 @@ class JobsController < ApplicationController
   # POST /jobs
   # POST /jobs.json
   def create
-    @job = current_user.jobs.build(job_params)
+    @job = current_user.company_details.find_by(params[:company_detail_id])
+    @company_details = @job.jobs.build(job_params)
+    @company_details.user_id = current_user.id
     respond_to do |format|
       if @job.save
         format.html { redirect_to @job, notice: 'Job was successfully created.' }
@@ -84,12 +86,17 @@ class JobsController < ApplicationController
       def current_user_jobs
         if user_signed_in?
           @jobs = current_user.jobs.order("created_at DESC")
-       end
+        else
+        end
      end
 
      def autocomplete
        render json: Job.search(params[:term_job], autocomplete: false, limit: 10).map do |job|
          { title: job.title, value: job.id }
        end
+     end
+
+     def display_user_content
+         @company_details = CompanyDetail.all
      end
 end

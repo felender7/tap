@@ -45,10 +45,9 @@
 
         <% else %>
           <li class="nav-item"><%= link_to "About us", "/about", class: "nav-link" %></li>
-          <li class="nav-item"><%= link_to "Find jobs", "#", class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "Find jobs", "/find_jobs", class: "nav-link" %></li>
           <li class="nav-item"><%= link_to "Login", new_user_session_path, class: "nav-link" %></li>
           <li class="nav-item"><%= link_to "CREATE PROFILE", new_user_registration_path, class: "nav-link btn btn-success my-2 my-sm-0" %></li>
-
         <% end %>
       </ul>
     </div>

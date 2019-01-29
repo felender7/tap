@@ -12,8 +12,7 @@ class User < ApplicationRecord
     has_many :cvs, dependent: :destroy
     has_many :documents, dependent: :destroy
     has_many :company_details, dependent: :destroy
-    has_many :jobs, dependent: :destroy
-
+    has_many :jobs
     searchkick word_start: [:name, :email]
 
     def search_data

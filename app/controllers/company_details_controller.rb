@@ -1,9 +1,9 @@
 class CompanyDetailsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_company_detail, only: [:show, :edit, :update, :destroy]
+  before_action :set_company_detail, only: [:profile,:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :current_user_company_details, only:[:show]
-  before_action :check_current_profile
+  #before_action :check_current_profile, except:[:profile]
 
   # GET /company_details
   # GET /company_details.json
@@ -14,6 +14,7 @@ class CompanyDetailsController < ApplicationController
   # GET /company_details/1
   # GET /company_details/1.json
   def show
+
   end
 
   # GET /company_details/new
@@ -89,11 +90,11 @@ class CompanyDetailsController < ApplicationController
      end
 
      # check if  the current user login in can view the page
-     def check_current_profile
-        if user_signed_in?
-          if current_user.profile_type == "Individual"
-            redirect_to root_path , notice:"Not authorised to view this page"
-          end
-        end
-     end
+     #def check_current_profile
+        #if user_signed_in?
+          #if current_user.profile_type == "Individual"
+            #redirect_to root_path , notice:"Not authorised to view this page"
+          #end
+        #end
+     #end
 end
