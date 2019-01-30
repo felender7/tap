@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   get '/about', to: 'about#index'
   match '/users',   to: 'users#index',   via: 'get'
   match '/users/:id',     to: 'users#show',       via: 'get'
-
   resources :find_jobs
   resources :users, :only =>[:show]
   resources :jobs
@@ -18,11 +17,12 @@ Rails.application.routes.draw do
   resources :cvs
   resources :charges
   resources :documents
-  namespace :admin
+  namespace :admin do
       resources :users
       resources :announcements
       resources :notifications
       resources :services
+
       root to: "users#index"
     end
   get '/privacy', to: 'home#privacy'
