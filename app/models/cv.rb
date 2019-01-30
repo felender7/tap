@@ -1,9 +1,11 @@
 class Cv < ApplicationRecord
   extend FriendlyId
+  include ZaIdValidator
   validates :phone, presence: true
   friendly_id :id_passport, use: :slugged
   validates :identification_type, presence: true
-  validates :id_passport, presence: true, length:{minimum: 2}, uniqueness:true
+  validate  :id_passport
+  validates_uniqueness_of :id_passport
   validates :date_of_birth, presence: true
   validates :place_of_birth, presence: true
   validates :disability, presence: true
