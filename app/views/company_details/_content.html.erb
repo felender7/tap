@@ -8,7 +8,7 @@
 <% @company_details.each do |company_detail| %>
 <%if current_user && company_detail.user == current_user%>
   <%= content_tag :tr, id: dom_id(company_detail), class: dom_class(company_detail) do %>
-      <h3 class="display-4"><%=current_user.name%></h3>
+      <h3 class="display-4">Hi, <%=current_user.name%></h3>
       <%= link_to company_detail , class:'btn btn-success'   do%>
          <i class="far fa-list-alt"></i> VIEW COMPANY DETAILS
       <% end%>

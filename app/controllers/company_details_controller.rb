@@ -14,7 +14,8 @@ class CompanyDetailsController < ApplicationController
   # GET /company_details/1
   # GET /company_details/1.json
   def show
-
+    @jobs = Job.where(company_detail_id: @company_detail.id).paginate(:page => params[:page], :per_page => 5).order("created_at DESC")
+    @jobs_count = Job.where(company_detail_id: @company_detail.id).count
   end
 
   # GET /company_details/new
@@ -30,7 +31,6 @@ class CompanyDetailsController < ApplicationController
   # POST /company_details.json
   def create
     @company_detail = current_user.company_details.build(company_detail_params)
-
     respond_to do |format|
       if @company_detail.save
         format.html { redirect_to @company_detail, notice: 'Company detail was successfully created.' }

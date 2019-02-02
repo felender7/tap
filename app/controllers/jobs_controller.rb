@@ -3,6 +3,7 @@ class JobsController < ApplicationController
   before_action :set_job, only:[:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :current_user_jobs, only:[:show]
+  before_action :check_current_profile, only:[:index, :new]
 
   # GET /jobs
   # GET /jobs.json
@@ -98,5 +99,15 @@ class JobsController < ApplicationController
 
      def display_user_content
          @company_details = CompanyDetail.all
+         @jobs_count = Job.where(company_detail_id: @company_details).count
+     end
+
+     # check if  the current user login in can view the page
+     def check_current_profile
+        if user_signed_in?
+          if current_user.profile_type == "Individual"
+            redirect_to root_path , notice:"Not authorised to view this page"
+          end
+        end
      end
 end

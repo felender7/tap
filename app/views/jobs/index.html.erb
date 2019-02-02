@@ -37,7 +37,7 @@
                 <%= content_tag :tr, id: dom_id(job), class: dom_class(job) do %>
                 <%if current_user && job.user == current_user %>
                 <tr>
-                  <td><%=link_to job do %><i class="far fa-folder"></i>
+                  <td width="100%"><%=link_to job do %><i class="far fa-folder"></i>
                     <%= job.title.titlecase %> <br>
                     <ul>
                   <li> <small class="text-muted"><%=truncate(job.description, size:100 )%></small></li>

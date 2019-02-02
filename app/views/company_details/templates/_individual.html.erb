@@ -20,7 +20,7 @@
 </div>
 <hr>
 <div class="row">
-  <div class="col-8">
+  <div class="col-lg-8">
     <div class="card">
       <div class="card-header text-success">
         Contacts
@@ -32,15 +32,22 @@
     </div>
   </div>
 
-  <div class="col">
+  <div class="col-lg-4">
     <div class="card">
       <div class="card-header text-success">
-        Recent Jobs
+         Most Recent Jobs <span class="badge bg-success text-light"> <%=@jobs_count%> </span>
       </div>
-      <div class="card-body">
-      </div>
-    </div>
+        <%@jobs.each do |job|%>
+        <div class="shadow-sm p-3 bg-light">
+           <strong><%=link_to job.title.titlecase, job%> </strong><br>
+            <small>@<%=job.company_detail.company_name%> <br>
+              <span class="badge bg-success text-light"><i class="fas fa-calendar-alt"></i> <%=time_ago_in_words(job.created_at) +" ago" %></span>
+              <span class="badge bg-success text-light"><i class="fas fa-map-marker-alt"></i> <%=job.city %></span>
+            </small>
+            </div>
+       <%end%>
   </div>
-
+  <br>
+  <%= will_paginate @jobs, list_classes: %w(pagination justify-content-end),renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
 </div>
 </div> <!-- end container-->
