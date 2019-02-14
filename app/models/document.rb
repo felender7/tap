@@ -5,7 +5,6 @@ class Document < ApplicationRecord
   validate :correct_document_mime_type
   has_one_attached :file
   belongs_to :user , optional: true
-  has_many :jobs, dependent: :destroy
 
   private
 

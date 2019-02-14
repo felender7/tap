@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <div class="shadow-sm p-3 mb-5 bg-light">
+  <div class="shadow-sm p-3 bg-light">
       <div class="row">
         <div class="col-md-8 text-muted">
           <h4><i class="far fa-list-alt"></i> ALL DOCUMENTS</h4>
@@ -22,19 +22,6 @@
             <thead>
               <tr>
                 <th>File Name</th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
                 <th colspan="3"></th>
               </tr>
             </thead>
@@ -43,29 +30,18 @@
                 <%= content_tag :tr, id: dom_id(document), class: dom_class(document) do %>
                 <% if current_user && document.user == current_user %>
                 <tr class="active">
-                  <td>
-                    <%= link_to document do %><i class="far fa-file-pdf text-danger"></i> <%= document.title %></td>
+                  <td width="90%">
+                    <%= link_to document do %><i class="far fa-file-pdf text-danger"></i> <%= document.title %> <br>
+                    <small class="text-muted"><%=(document.file.byte_size) / 1000.0%> bytes</small>
+                  </td>
                    <%end%>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+
                   <td><span class="badge bg-success " ><%= link_to document.file, download:'' do %>
                     <i class="fas fa-file-download text-light" data-toggle="tooltip" title="Download" ></i></span>
                     <%end%> |
                     <span class="badge bg-danger"><%= link_to document, method: :delete, data: { confirm: 'Are you sure?' } do %>
                        <i class="fas fa-trash-alt text-light" data-toggle="tooltip" title="Destroy"></i></span>
-                      <%end%> | <small class="text-muted"><%=(document.file.byte_size) / 1000.0%> bytes</small>
+                      <%end%>
                     </td>
                     <% end %>
                 <% end %>

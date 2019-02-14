@@ -1,5 +1,5 @@
 class FindJobsController < ApplicationController
-    before_action :set_job, only:[:show, :edit, :update, :destroy]
+    before_action :set_job, only:[:show]
     before_action :check_current_profile
     def index
       @get_jobs = if params[:term_job].present?

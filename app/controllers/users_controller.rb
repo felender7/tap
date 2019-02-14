@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only:[:show]
 
   def index
-    @users = User.where(profile_type: "Individual").order("created_at DESC")
+    @users = User.where(profile_type: "Individual").order("updated_at DESC")
   end
 
   def show

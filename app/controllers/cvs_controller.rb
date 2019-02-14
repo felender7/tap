@@ -31,7 +31,6 @@ class CvsController < ApplicationController
   # POST /cvs.json
   def create
     @cv = current_user.cvs.build(cv_params)
-
     respond_to do |format|
       if @cv.save
         format.html { redirect_to @cv, notice: 'Cv was successfully created.' }
@@ -48,7 +47,7 @@ class CvsController < ApplicationController
   def update
     respond_to do |format|
       if @cv.update(cv_params)
-        format.html { redirect_to @cv, notice: 'Cv was successfully updated.' }
+        format.html { redirect_to @cv, notice: 'Resume was successfully updated.' }
         format.json { render :show, status: :ok, location: @cv }
       else
         format.html { render :edit }
@@ -75,12 +74,12 @@ class CvsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cv_params
-      params.require(:cv).permit(:phone, :identification_type,:user_id,:id_passport,:gender, :ethnicity ,:date_of_birth, :place_of_birth,:disability, :education_type, :avatar,:job_function, :job_industry, :availability, :salary_range )
+      params.require(:cv).permit(:phone, :identification_type,:user_id,:id_passport,:gender, :ethnicity ,:date_of_birth, :place_of_birth,:disability, :education_type, :avatar,:job_function, :job_industry, :availability, :salary_range, :facebook ,:twitter,:linked_in, referrals_attributes: [:id, :institution, :contact_person,:position,:contact_numbers, :_destroy])
     end
     # check if the user is authorised to edit,update or destroy the cv
     def correct_user
       @cv = current_user.cvs.find_by(params[:friendly])
-          redirect_to cvs_path, notice: "Not authorised to edit this cv" if @cv.nil?
+          redirect_to cvs_path, notice: "Not authorised to edit this resume" if @cv.nil?
     end
     # check if  cv belongs to the correct user - current user
       def current_user_cvs

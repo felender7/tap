@@ -1,6 +1,6 @@
 
 <div class="container-fluid">
-  <div class="shadow-sm p-3 mb-5 bg-light">
+  <div class="shadow-sm p-3 bg-light">
       <div class="row">
         <div class="col-md-8 text-muted">
           <h4><i class="far fa-list-alt"></i> DOCUMENT - <%= @document.title %> </h4>
@@ -25,9 +25,6 @@
           <thead>
             <tr>
               <th>File Name</th>
-              <th></th>
-              <th></th>
-              <th></th>
               <th colspan="3"></th>
             </tr>
           </thead>
@@ -35,9 +32,9 @@
             <tr class="active">
          </tbody>
             <tr>
-              <td><strong class="text-muted"><%= @document.title %></strong></td>
+              <td width="100%"><strong class="text-muted"><%= @document.title %></strong></td>
               <td><%=link_to @document.file, download:'' do %>
-                <i class="fas fa-file-download"> </i> Download
+                <span class="badge bg-success text-light"><i class="fas fa-file-download"> </i> Download </span>
                <%end%>
               </td>
             </tr>

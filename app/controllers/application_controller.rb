@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :get_counts
   before_action :calculating_tap_score
 
+
   protected
       def configure_permitted_parameters
         devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:profile_type, :phone,:varification, :slug])
@@ -26,6 +27,9 @@ class ApplicationController < ActionController::Base
         end
       end
 
+      def get_cv_link
+        @link_cv = Cv.all
+      end
       #calculating tap score
       def calculating_tap_score
         if user_signed_in?

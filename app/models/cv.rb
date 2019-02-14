@@ -1,10 +1,9 @@
 class Cv < ApplicationRecord
   extend FriendlyId
-  include ZaIdValidator
   validates :phone, presence: true
   friendly_id :id_passport, use: :slugged
   validates :identification_type, presence: true
-  validate  :id_passport
+  validates  :id_passport , presence: true
   validates_uniqueness_of :id_passport
   validates :date_of_birth, presence: true
   validates :place_of_birth, presence: true
@@ -19,9 +18,11 @@ class Cv < ApplicationRecord
   validate :correct_image_type
   has_one_attached :avatar
   belongs_to :user , optional: true
-  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
-  before_save :check_cropping
+  has_many :referrals, inverse_of: :cvs
+  accepts_nested_attributes_for :referrals, reject_if: :all_blank, allow_destroy: true
 
+  #has_many :referrals, dependent: :destroy
+  #accepts_nested_attributes_for :referrals, allow_destroy: true, reject_if: proc { |att| att['institution'].blank? }
 
 
   def correct_image_type
@@ -31,26 +32,5 @@ class Cv < ApplicationRecord
   end
 
 
-  def check_cropping
-    self.crop_settings = {x: crop_x, y: crop_y, w: crop_w, h: crop_h} if cropping?
-  end
 
-  def cropping?
-    !crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?
- end
-
- def thumbnail(size = '150x150')
-   if avatar.attached?
-     if cropping?
-       dimensions = "#{crop_settings['w']}x#{crop_settings['h']}"
-       coord = "#{crop_settings['x']}+#{crop_settings['y']}"
-       avatar.variant(
-       crop: "#{dimensions}+#{coord}",
-       resize: size
-       ).processed
-     else
-       avatar.variant(resize: size).processed
-     end
-   end
- end #end thumbnail
 end

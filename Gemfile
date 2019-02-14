@@ -91,7 +91,8 @@ gem 'whenever', require: false
 gem 'stripe'
 gem 'simplemde'
 gem 'momentjs-rails'
-gem "za-id-validator", "0.1.0"
-#gem 'searchkick'
+gem 'cocoon'
+gem 'simple_form'
+gem 'searchkick'
 #gem 'twitter-typeahead-rails'
 gem 'will_paginate-bootstrap4'

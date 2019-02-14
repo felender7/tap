@@ -2,9 +2,9 @@
 
 <div class="container">
   <h3 class="text-center text-success">Jobs that might interest you:</h3>
-    <div class="my-3 p-3 bg-white rounded shadow-sm">
-       <h6 class="border-bottom border-gray pb-2 mb-0">Jobs</h6>
+      <h6 class="border-bottom border-gray pb-2 mb-0">Jobs</h6>
        <%@get_jobs.each do |get_job| %>
+       <div class="my-3 p-3 bg-light rounded shadow-sm">
        <div class="media text-muted pt-3">
          <% if get_job.company_detail.company_logo.attached? %>
            <%= image_tag get_job.company_detail.company_logo.variant(resize:"52x52"), height: 52, width: 52, class:"bd-placeholder-img mr-2 rounded img-border" %>
@@ -12,7 +12,7 @@
          <svg class="bd-placeholder-img mr-2 rounded text-light" width="52" height="52" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect fill="#007bff" width="100%" height="100%"/><text fill="#fff" dy=".3em" x="25%" y="50%"><%= get_job.company_detail.company_name[0..1].upcase %> </text> </svg>
 
          <%end%>
-         <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+         <div class="media-body pb-3 mb-0 small lh-125 ">
            <div class="d-flex justify-content-between align-items-center w-100">
              <strong class="text-gray-dark"><%=link_to get_job.title.titlecase, get_job%></strong>
              <a href="#">Follow</a>
@@ -23,8 +23,8 @@
             <p class="text-justify"><%=get_job.description%></p>
          </div>
        </div>
-
+       </div>
        <%end%><!--end loop-->
-     </div>
+
      <%= will_paginate @get_jobs, list_classes: %w(pagination justify-content-end),renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
 </div> <!--end container-->

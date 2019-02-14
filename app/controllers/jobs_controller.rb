@@ -1,9 +1,11 @@
 class JobsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_job, only:[:show, :edit, :update, :destroy]
+  before_action :set_job, only: [:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :current_user_jobs, only:[:show]
   before_action :check_current_profile, only:[:index, :new]
+
+
 
   # GET /jobs
   # GET /jobs.json
@@ -81,13 +83,12 @@ class JobsController < ApplicationController
     # check if the user is authorised to edit,update or destroy the cv
     def correct_user
       @job = current_user.jobs.find_by(params[:friendly])
-          redirect_to jobs_path, notice: "Not authorised to edit this cv" if @job.nil?
+          redirect_to jobs_path, notice: "Not authorised to edit this job" if @job.nil?
     end
     # check if  cv belongs to the correct user - current user
       def current_user_jobs
         if user_signed_in?
           @jobs = current_user.jobs.order("created_at DESC")
-        else
         end
      end
 

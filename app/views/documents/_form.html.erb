@@ -36,7 +36,7 @@
           <div class="form-group">
             <% if document.persisted? %>
               <div class="float-right">
-                <%= link_to 'Destroy', document, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
+                <%= link_to 'Destroy', document_path(@document), method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
               </div>
             <% end %>
             <hr>

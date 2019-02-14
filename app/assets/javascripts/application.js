@@ -21,6 +21,7 @@
 //= require moment
 //= require simplemde
 //= require typeahead.bundle
+//= require cocoon
 //= require_tree .
 
 

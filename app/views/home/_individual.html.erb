@@ -33,12 +33,13 @@
 
 <div class="row">
   <div class="col-lg-12">
-    <h4>Companies that are hiring</h4>
     <div class="shadow-sm p-3 mb-5 bg-light">
       <%if current_user.cvs.exists? %>
+      <h4>Companies that are hiring</h4>
+      <hr>
            <%=render'home/templates/open_companies'%>
         <%else%>
-           <h4>Complete your CV to see companies that are hiring</h4>
+           <p>Hi,complete your resume to see companies that are hiring</p>
         <%end%>
     </div>
   </div>

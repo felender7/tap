@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_29_104055) do
+ActiveRecord::Schema.define(version: 2019_02_13_111750) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -75,6 +75,9 @@ ActiveRecord::Schema.define(version: 2019_01_29_104055) do
     t.string "availability"
     t.string "salary_range"
     t.string "phone"
+    t.string "facebook"
+    t.string "twitter"
+    t.string "linked_in"
     t.index ["slug"], name: "index_cvs_on_slug", unique: true
     t.index ["user_id"], name: "index_cvs_on_user_id"
   end
@@ -129,6 +132,28 @@ ActiveRecord::Schema.define(version: 2019_01_29_104055) do
     t.string "notifiable_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "references", force: :cascade do |t|
+    t.integer "cvs_id"
+    t.string "institution"
+    t.string "contact_person"
+    t.string "position"
+    t.string "contact_numbers"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cvs_id"], name: "index_references_on_cvs_id"
+  end
+
+  create_table "referrals", force: :cascade do |t|
+    t.string "institution"
+    t.string "contact_person"
+    t.string "position"
+    t.string "contact_number"
+    t.integer "cvs_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cvs_id"], name: "index_referrals_on_cvs_id"
   end
 
   create_table "services", force: :cascade do |t|

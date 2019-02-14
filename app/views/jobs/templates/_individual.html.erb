@@ -31,7 +31,7 @@
                   <li class="list-inline-item"><i class="fas fa-map-marker-alt"></i> <%= @job.city %></li>
                   <li class="list-inline-item"><i class="fas fa-clock"></i> <%= @job.work_type %></li>
                   <li class="list-inline-item"><i class="fas fa-briefcase"></i> <%= @job.contract_type %></li>
-                  <li class="list-inline-item"> <i class="fas fa-calender-alt"></i>Published: <%=time_ago_in_words(@job.created_at) +" ago" %></li>
+                  <li class="list-inline-item"> <i class="fas fa-calendar-alt"></i> Published: <%=time_ago_in_words(@job.created_at) +" ago" %></li>
                    </small>
                 </ul>
               <span class="badge bg-success text-light">
@@ -68,7 +68,7 @@
         <%end%> <br> <br>
         <strong class="text-muted "><%=@job.company_detail.company_name.upcase%></strong> <br>
              <span class="badge bg-success text-light"><%=@job.company_detail.industry %></span>
-             <span class="badge bg-success text-light"> <%=@jobs_count%> Jobs</span>
+             
               <hr>
           <%=link_to 'Company Profile', @job.company_detail, class:"btn btn-sm btn-secondary"%>
       </div>
