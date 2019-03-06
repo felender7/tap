@@ -2,6 +2,7 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
 
+
   get 'service_provider', to: 'service_provider#index' ,   via: 'get'
   get '/service_provider/:id', to: 'service_provider#show' ,   via: 'get'
   get 'summary', to: 'summary#show'
@@ -18,10 +19,9 @@ Rails.application.routes.draw do
  end
 
   resources :users, :only =>[:show] do
-    collection do
-      get :autocomplete
-    end
+    resources :reviews, except: [:index,:show]
   end
+
   resources :jobs
   resources :company_details
   resources :cvs

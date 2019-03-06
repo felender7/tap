@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_13_111750) do
+ActiveRecord::Schema.define(version: 2019_03_06_111018) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -134,17 +134,6 @@ ActiveRecord::Schema.define(version: 2019_02_13_111750) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "references", force: :cascade do |t|
-    t.integer "cvs_id"
-    t.string "institution"
-    t.string "contact_person"
-    t.string "position"
-    t.string "contact_numbers"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["cvs_id"], name: "index_references_on_cvs_id"
-  end
-
   create_table "referrals", force: :cascade do |t|
     t.string "institution"
     t.string "contact_person"
@@ -154,6 +143,15 @@ ActiveRecord::Schema.define(version: 2019_02_13_111750) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cvs_id"], name: "index_referrals_on_cvs_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "cv_id"
   end
 
   create_table "services", force: :cascade do |t|

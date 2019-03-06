@@ -4,7 +4,7 @@
   <h3 class="text-center text-success">Jobs that might interest you:</h3>
       <h6 class="border-bottom border-gray pb-2 mb-0">Jobs</h6>
        <%@get_jobs.each do |get_job| %>
-       <div class="my-3 p-3 bg-light rounded shadow-sm">
+       <div class="my-3 p-3 bg-white rounded shadow-sm border-top-reviews">
        <div class="media text-muted pt-3">
          <% if get_job.company_detail.company_logo.attached? %>
            <%= image_tag get_job.company_detail.company_logo.variant(resize:"52x52"), height: 52, width: 52, class:"bd-placeholder-img mr-2 rounded img-border" %>

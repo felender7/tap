@@ -13,12 +13,11 @@
       <a class="nav-link" href="/documents"><i class="far fa-folder"></i> My Documents <span class="badge bg-success text-light"> <%=@document_count%></span> </a>
     <%end%>
     <a class="nav-link" href="/find_jobs"><i class="far fa-user"></i> Find Jobs <span class="badge bg-success text-light"><%=@jobs_count%></span> </a>
-    <a class="nav-link" href="#"><i class="far fa-star"></i> My Tap Score <span class="badge bg-success text-light"> <%=@tap_score%>  /10</span> </a>
-    <a class="nav-link" href="#"><i class="far fa-meh-rolling-eyes"></i> My Reviews</a>
+    <a class="nav-link" href="#"><i class="far fa-star"></i> Tap Score <span class="badge bg-success text-light"> <%=@tap_score%>  /10</span> </a>
+
        <%else%>
      <a class="nav-link" href="/company_details"><i class="far fa-building"></i></i> Company Details <span class="badge bg-success text-light">1</span></a>
      <a class="nav-link" href="/jobs"><i class="far fa-folder "></i> Jobs <span class="badge bg-success text-light"> <%=current_user.jobs.count%></span></a>
-     <a class="nav-link" href="#"><i class="far fa-meh-rolling-eyes"></i> My Reviews</a>
     <%end%>
     <%= link_to "What's New", announcements_path, class: "nav-link #{unread_announcements(current_user)}" %>
   </a>

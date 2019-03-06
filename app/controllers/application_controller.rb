@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :masquerade_user!
   before_action :get_counts
   before_action :calculating_tap_score
+  before_action :calculating_avarage_rating
 
 
   protected
@@ -40,4 +41,10 @@ class ApplicationController < ActionController::Base
          end
       end
     end
-end
+
+  def calculating_avarage_rating
+     if user_signed_in?
+        @avg_review = current_user.reviews.count
+      end
+    end
+  end

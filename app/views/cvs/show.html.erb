@@ -13,7 +13,7 @@
 <div class="row">
   <div class="col-lg-2">
     <% if @cv.avatar.attached? %>
-       <%= image_tag(@cv.thumbnail, height: 150, width: 150, class:"rounded margin-bottom-20 img-thumbnail") if @cv.thumbnail %>
+       <%= image_tag(@cv.avatar, height: 150, width: 150, class:"rounded margin-bottom-20 img-thumbnail") if @cv.avatar %>
     <%else%>
     <%= image_tag ("placeholder_avatar.png"), height: 150, width: 150, class: "rounded margin-bottom-20" %>
     <%end%>

@@ -4,10 +4,19 @@ class UsersController < ApplicationController
 
   def index
     @users = User.where(profile_type: "Individual").order("updated_at DESC")
+
   end
 
   def show
     @user = User.friendly.find(params[:id])
+    @reviews = Review.where(user_id: @user.id).paginate(:page => params[:page], :per_page => 4).order('created_at DESC')
+    @reviews_home = current_user.reviews
+    if @reviews.blank?
+      @avg_review = 0
+    else
+        @avg_review = @reviews.average(:rating).round(2)
+      end
+  end
   end
 
   def display_user_content
@@ -24,4 +33,3 @@ class UsersController < ApplicationController
        end
      end
   end
-end
