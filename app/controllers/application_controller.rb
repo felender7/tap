@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
       def get_counts
         if user_signed_in?
           @service_provider_count = User.where(profile_type: "Individual").count
+          @referral_count = current_user.referrals.count
           @document_count = current_user.documents.count
           @cv_count = current_user.cvs.count
           @applicants_count = User.where(:profile_type => "Individual").count

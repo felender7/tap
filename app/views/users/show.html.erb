@@ -31,12 +31,16 @@
       <%end%>
       <div class="star-rating" data-score=<%= @avg_review %> ></div> <br>
       <em class="text-muted"> <%= pluralize(@reviews.length, "review") %> </em>  <hr>
-       <%=link_to"Write review",new_user_review_path(@user), class:"btn btn-sm btn-warning"%>
+      <%if @reviews.blank?%>
+      <%else%>
+        <%=link_to"Write review",new_user_review_path(@user), class:"btn btn-sm btn-warning text-light"%>
+       <%end%>
+
     </div>
     <div class="col-lg-6">
       <div class="table-responsive-sm">
           <table class="table table-sm">
-          <strong><p class="text-primary">CURRICULUM VITEA</p></strong>
+          <strong><p class="text-primary"><i class="far fa-list-alt"></i> CURRICULUM VITEA</p></strong>
             <tbody>
               <tr class="d-flex"></tr>
            </tbody>
@@ -51,10 +55,10 @@
               </tr>
               <tr>
                 <td><strong>ID/Passport:</strong></td>
-                <td>  <%= display_cv.id_passport%>
+                <td>  <%= display_cv.id_passport%> <br>
                   <%if display_cv.identification_type == "ID" %>
-                    <small class="badge bg-primary text-light"><i class="fas fa-user"></i> ID|
-                       <small>South African Citizen</small> </small>
+                    <small class="badge bg-primary text-light"><i class="fas fa-user"></i> ID|South African Citizen
+                      </small>
                     <%else%>
                     <small class="badge bg-primary text-light"><i class="fas fa-user"></i> Passport |
                       <small>Non South African Citizen</small>
@@ -115,30 +119,68 @@
                <tr>
                  <td><strong>Verification:</strong></td>
                  <td><%if @user.varification == true %>
-                  <span class="badge bg-primary text-light"><i class="fas fa-check"></i> Verified</span>
+                  <span class="badge bg-success text-light"><i class="fas fa-check-double"></i> Verified</span>
                   <%else%>
-                  <span class="badge bg-danger text-light"><i class="fas fa-certificate"></i> Not verified </span>
+                  <span class="badge bg-danger text-light"><i class="fas fa-times-circle"></i> Not verified </span>
                    <%end%>
                  </td>
+               </tr>
+
+               <tr>
+                 <td><strong>Facebook:</strong></td>
+                 <td><%= display_cv.facebook %></td>
+               </tr>
+               <tr>
+                 <td><strong>Twitter:</strong></td>
+                 <td><%= display_cv.twitter %></td>
+               </tr>
+
+               <tr>
+                 <td><strong>LinkedIn:</strong></td>
+                 <td><%= display_cv.linked_in %></td>
                </tr>
             <%end%>
           </table>
 
+          <div class="table-responsive">
+            <table class="table table-hover  bg-warning ">
+              <strong><p class="text-primary"><i class="far fa-user-circle"></i> REFERANCES</p></strong>
+              <hr>
+              <tbody>
+                <thead>
+                   <th>INSTITUTION</th>
+                   <th>CONTACT PERSON</th>
+                   <th>POSTION</th>
+                   <th>CONTACT NUMBER</th>
+                </thead>
+                <% @display_referrals.each do |display_referrals| %>
+                     <tr width="100%">
+                      <td><%=display_referrals.institution%></td>
+                      <td><%=display_referrals.contact_person%></td>
+                      <td><%=display_referrals.position%></td>
+                      <td>+27<%=display_referrals.contact_number%></td>
+                     </tr>
+
+                  <%end%>
+              </tbody>
+            </table>
+          </div>
+          <br>
           <div class="table-responsive ">
             <table class="table table-hover jumbotron">
-              <strong><p class="text-primary">DOCUMENTS</p></strong>
-
+              <strong><p class="text-primary"><i class="far fa-folder"></i> DOCUMENTS</p></strong>
+              <hr>
               <tbody>
                 <% @display_documents.each do |display_document| %>
                   <%= content_tag :tr, id: dom_id(display_document), class: dom_class(display_document) do %>
                   <tr class="active">
-                    <td width="85%">
+                    <td width="100%">
                       <i class="far fa-file-pdf text-danger"></i> <%= display_document.title %> <br>
                       <small class="text-muted"><%=(display_document.file.byte_size)/ 1000.0%> bytes</small>
                     </td>
 
                     <td><span class="badge bg-primary " ><%= link_to display_document.file, download:'' do %>
-                      <i class="fas fa-file-download text-light" data-toggle="tooltip" title="Download" ></i> DOWNLOAD</span>
+                      <i class="fas fa-file-download text-light" data-toggle="tooltip" title="Download" ></i></span>
                       <%end%>
                       </td>
                       <% end %>
@@ -154,7 +196,7 @@
        <hr>
        <%if @reviews.blank?%>
          <p class="text-muted">No reviews just yet, would you like to add the first!</p>
-         <%=link_to"Write review",new_user_review_path(@user), class:"btn btn-sm btn-warning"%>
+         <%=link_to"Write review",new_user_review_path(@user), class:"btn btn-sm btn-warning text-light"%>
          <%else%>
          <%@reviews.each do|review|%>
            <div class="my-3 p-3 bg-white rounded shadow-sm border-top-reviews" >
@@ -162,11 +204,23 @@
              <div class="star-rating" data-score=<%= review.rating %> ></div>
              <p><%=review.comment%></p>
           </div>
-           <hr>
-          <small class="text-muted"><i class="far fa-clock"></i> <%=time_ago_in_words(review.created_at) +" ago" %></small>
+          <!-- action-->
+          <% if user_signed_in? %>
+              <% if review.user_id == current_user.id %>
+              <div class="links btn-group">
+              <%= link_to  edit_user_review_path(review.user, review) do %>
+              <span class="badge bg-primary text-light " ><i class="fas fa-edit"></i></span>
+              <%end%> |
+              <%= link_to user_review_path(review.user, review), method: :delete, data: { confirm: "Are you sure?" } do %>
+              <span class="badge bg-danger text-light " ><i class="fas fa-trash"></i></span>
+              <%end%>
+              </div>
+              <% end %>
+          <% end %>
+           <!-- action end-->
         </div>
-         <%end%>
        <%end%>
+      <%end%>
 
        <%= will_paginate @reviews, list_classes: %w(pagination justify-content-end),renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
       </div>
@@ -175,12 +229,12 @@
 
   <% end %>
 
-      <script>
-          $('.star-rating').raty({
-            path: '/assets/',
-            readOnly: true,
-            score: function() {
-                  return $(this).attr('data-score');
-          }
-        });
-      </script>
+  <script>
+      $('.star-rating').raty({
+        path: '/assets/',
+        readOnly: true,
+        score: function() {
+              return $(this).attr('data-score');
+      }
+    });
+  </script>

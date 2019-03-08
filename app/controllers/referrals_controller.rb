@@ -14,7 +14,7 @@ class ReferralsController < ApplicationController
 
   # GET /referrals/new
   def new
-    @referral = Referral.new
+    @referral = current_user.referrals.build
   end
 
   # GET /referrals/1/edit
@@ -24,8 +24,8 @@ class ReferralsController < ApplicationController
   # POST /referrals
   # POST /referrals.json
   def create
-    @referral = Referral.new(referral_params)
-
+    @referral = current_user.referrals.build(referral_params)
+    @referral.user_id = current_user.id
     respond_to do |format|
       if @referral.save
         format.html { redirect_to @referral, notice: 'Referral was successfully created.' }
@@ -64,11 +64,11 @@ class ReferralsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_referral
-      @referral = Referral.find(params[:id])
+      @referral = Referral.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def referral_params
-      params.require(:referral).permit(:institution, :contact_person, :position)
+      params.require(:referral).permit(:institution, :contact_person, :position, :contact_number, :user_id)
     end
 end

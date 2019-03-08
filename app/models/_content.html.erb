@@ -17,7 +17,7 @@
       <div class="col-lg-6">
         <div class="table-responsive-sm">
             <table class="table table-sm">
-            <strong><p class="text-primary"><i class="far fa-list-alt"></i> CURRICULUM VITEA</p></strong>
+            <strong><p class="text-primary">CURRICULUM VITEA</p></strong>
               <tbody>
                 <tr class="d-flex"></tr>
              </tbody>
@@ -122,37 +122,10 @@
               <%end%>
             </table>
 
-
-            <div class="table-responsive">
-              <table class="table table-hover  bg-warning ">
-                <strong><p class="text-primary"><i class="far fa-user-circle"></i> REFERANCES</p></strong>
-                <hr>
-                <tbody>
-                  <thead>
-                     <th>INSTITUTION</th>
-                     <th>CONTACT PERSON</th>
-                     <th>POSTION</th>
-                     <th>CONTACT NUMBER</th>
-                  </thead>
-                  <% @referrals.each do |referrals| %>
-                    <% if current_user && referrals.user == current_user %>
-                       <tr width="100%">
-                        <td><%=referrals.institution%></td>
-                        <td><%=referrals.contact_person%></td>
-                        <td><%=referrals.position%></td>
-                        <td>+27<%=referrals.contact_number%></td>
-                       </tr>
-                     <%end%>
-                    <%end%>
-                </tbody>
-              </table>
-            </div>
-            
-            <br>
             <div class="table-responsive">
               <table class="table table-hover jumbotron">
-                <strong><p class="text-primary"><i class="far fa-folder"></i> DOCUMENTS</p></strong>
-                <hr>
+                <strong><p class="text-primary">DOCUMENTS</p></strong>
+
                 <tbody>
                   <% @documents.each do |document| %>
                     <%= content_tag :tr, id: dom_id(document), class: dom_class(document) do %>

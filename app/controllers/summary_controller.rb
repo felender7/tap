@@ -1,7 +1,8 @@
 class SummaryController < ApplicationController
-#fetching the cv and document for summary
+# fetching the cv, referrals and document for summary
     def show
        @cv = current_user.cvs.find_by(params[:id])
+       @referrals = Referral.all
        @documents = Document.all
        check_current_profile
     end

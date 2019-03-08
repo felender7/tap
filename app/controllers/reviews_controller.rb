@@ -3,16 +3,17 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
   before_action :set_user
 
-  def new
-    @review = Review.new
-  end
+ def index
+   @reviews = Review.all.order('created_at DESC')
+ end
 
-  def edit
+  def new
+    @review = current_user.reviews.build
   end
 
 
   def create
-    @review = Review.new(review_params)
+    @review = current_user.reviews.build(review_params)
     @review.user_id = current_user.id
     @review.user_id = @user.id
     respond_to do |format|
@@ -59,6 +60,7 @@ class ReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:rating, :comment, :user_id, :cv_id)
+      params.require(:review).permit(:rating, :comment, :user_id)
     end
+
 end

@@ -2,16 +2,19 @@ class UsersController < ApplicationController
   before_action :display_user_content, only:[:show]
   before_action :authenticate_user!, only:[:show]
 
+
   def index
     @users = User.where(profile_type: "Individual").order("updated_at DESC")
 
   end
 
+  def edit
+  end
 
   def show
     @user = User.friendly.find(params[:id])
     @reviews = Review.where(user_id: @user.id).paginate(:page => params[:page], :per_page => 4).order('created_at DESC')
-    @reviews_home = current_user.reviews
+
     if @reviews.blank?
       @avg_review = 0
     else
@@ -23,6 +26,7 @@ class UsersController < ApplicationController
   def display_user_content
       @user = User.friendly.find(params[:id])
       @display_cv = @user.cvs
+      @display_referrals = @user.referrals.order("created_at DESC")
       @display_documents = @user.documents.order("created_at DESC")
   end
 
