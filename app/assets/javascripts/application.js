@@ -21,7 +21,8 @@
 //= require moment
 //= require simplemde
 //= require typeahead.bundle
-//= require cocoon
+//= require jquery.raty
+//=require jquery.pjax
 //= require_tree .
 
 

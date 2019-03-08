@@ -204,6 +204,7 @@
              <div class="star-rating" data-score=<%= review.rating %> ></div>
              <p><%=review.comment%></p>
           </div>
+          <hr>
           <!-- action-->
           <% if user_signed_in? %>
               <% if review.user_id == current_user.id %>
@@ -228,13 +229,3 @@
       </div>
 
   <% end %>
-
-  <script>
-      $('.star-rating').raty({
-        path: '/assets/',
-        readOnly: true,
-        score: function() {
-              return $(this).attr('data-score');
-      }
-    });
-  </script>

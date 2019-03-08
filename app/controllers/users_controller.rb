@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :display_user_content, only:[:show]
   before_action :authenticate_user!, only:[:show]
-
+  
 
   def index
     @users = User.where(profile_type: "Individual").order("updated_at DESC")
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     if @reviews.blank?
       @avg_review = 0
     else
-        @avg_review = @reviews.average(:rating).round(2)
+        @avg_review = @reviews.average(:rating).present? ? @reviews.average(:rating).round(2) : 0
       end
   end
   end

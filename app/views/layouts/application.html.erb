@@ -7,7 +7,11 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/notices' %>
-      <%= yield %>
+    <div data-pjax-container class="mt-5" >
+  
+        <%= yield %>
+
+    </div>
      <%= render 'shared/footer' %>
 
   </body>
