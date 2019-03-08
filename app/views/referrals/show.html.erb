@@ -1,0 +1,23 @@
+<div class="page-header">
+  <%= link_to referrals_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    All Referrals
+  <% end %>
+  <%= link_to edit_referral_path(@referral), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show referral</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Institution:</dt>
+  <dd><%= @referral.institution %></dd>
+
+  <dt>Contact person:</dt>
+  <dd><%= @referral.contact_person %></dd>
+
+  <dt>Position:</dt>
+  <dd><%= @referral.position %></dd>
+
+</dl>

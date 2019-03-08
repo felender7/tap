@@ -1,0 +1,17 @@
+<%if @reviews.blank?%>
+  <p class="text-muted">No reviews just yet, would you like to add the first!</p>
+  <%=link_to"Write review",new_user_review_path(@user), class:"btn btn-sm btn-warning"%>
+  <%else%>
+  <%@reviews.each do|review|%>
+    <div class="my-1 p-3 bg-white rounded shadow-sm border-top-reviews" >
+   <div class="reviews text-muted">
+      <div class="star-rating" data-score=<%= review.rating %> ></div>
+      <p><%=review.comment%></p>
+   </div>
+    <hr>
+   <small class="text-muted pull-right"><i class="far fa-clock"></i> <%=time_ago_in_words(review.created_at) +" ago" %> 
+</small>
+ </div>
+
+  <%end%>
+<%end%>

@@ -1,8 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_review, only: [:show, :edit, :update, :destroy]
-  before_action :set_cv
-
+  before_action :set_user
 
   def new
     @review = Review.new
@@ -30,7 +29,7 @@ class ReviewsController < ApplicationController
   def update
     respond_to do |format|
       if @review.update(review_params)
-        format.html { redirect_to @review, notice: 'Review was successfully updated.' }
+        format.html { redirect_to @user, notice: 'Review was successfully updated.' }
         format.json { render :show, status: :ok, location: @review }
       else
         format.html { render :edit }
@@ -43,7 +42,7 @@ class ReviewsController < ApplicationController
   def destroy
     @review.destroy
     respond_to do |format|
-      format.html { redirect_to reviews_url, notice: 'Review was successfully destroyed.' }
+      format.html { redirect_to @user, notice: 'Review was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -54,7 +53,7 @@ class ReviewsController < ApplicationController
       @review = Review.find(params[:id])
     end
 
-    def set_cv
+    def set_user
       @user = User.friendly.find(params[:user_id])
     end
 

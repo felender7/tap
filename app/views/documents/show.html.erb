@@ -13,10 +13,10 @@
 <div class="shadow-sm p-3 mb-5 bg-white">
 <div class="row">
   <div class="col-lg-8">
-    <%=link_to documents_path, class:'btn btn-success' do %>
+    <%=link_to documents_path, class:'btn btn-primary' do %>
     <i class="fas fa-list"></i> View All Documents
     <%end%>
-    <%= link_to new_document_path, class: 'btn btn-success' do %>
+    <%= link_to new_document_path, class: 'btn btn-primary' do %>
       <i class="fas fa-plus-square"></i> Add New Document
     <% end %>
      <br> <br>
@@ -50,7 +50,7 @@
     <%= link_to edit_document_path(@document) do %>
        <i class="fas fa-edit"></i>
     <%end%> |
-    <%=link_to summary_path, class:'btn btn-success btn-sm' do %>
+    <%=link_to summary_path, class:'btn btn-primary btn-sm' do %>
       NEXT - <i class="far fa-list-alt"></i> SUMMARY
     <%end%>
 

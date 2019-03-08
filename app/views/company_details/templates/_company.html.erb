@@ -26,7 +26,7 @@
       <tbody>
         <tr class="d-flex"></tr>
      </tbody>
-       <h4 class="text-success">DETAILS OF THE PERSON IN CHARGE</h4>
+       <h4 class="text-primary">DETAILS OF THE PERSON IN CHARGE</h4>
        <tr>
         <td><strong>Full Name:</strong></td>
         <td><%=current_user.name.titlecase%></td>
@@ -41,7 +41,7 @@
      <tbody>
        <tr class="d-flex"></tr>
     </tbody>
-      <h4 class="text-success">COMPANY DETAILS</h4>
+      <h4 class="text-primary">COMPANY DETAILS</h4>
       <tr>
          <td><strong>Company Name:</strong></td>
          <td><%= @company_detail.company_name.titlecase %></td>
@@ -54,7 +54,7 @@
 
        <tr>
          <td><strong>Tap Number:</strong></td>
-         <td><span class="badge bg-success text-light"><i class="fas fa-user-lock"></i> #TAP00<%=current_user.id%></span></td>
+         <td><span class="badge bg-primary text-light"><i class="fas fa-user-lock"></i> #TAP00<%=current_user.id%></span></td>
        </tr>
 
         <tr>
@@ -73,24 +73,24 @@
         </tr>
 
   </table> <!--company_detail details table end-->
-  <span class="badge bg-success text-light">About the company</span> <br>
+  <span class="badge bg-primary text-light">About the company</span> <br>
    <p class="text-justify text-muted"><%= @company_detail.description.capitalize %></p>
 
    <table class="table">
      <tbody>
        <tr class="d-flex"></tr>
     </tbody>
-      <h4 class="text-success">DOCUMENTS</h4>
+      <h4 class="text-primary">DOCUMENTS</h4>
       <tr>
          <td width="100%"><strong>CK:</strong></td>
-         <td><span class="badge bg-success text-light" ><%= link_to @company_detail.ck, download:'' do %>
+         <td><span class="badge bg-primary text-light" ><%= link_to @company_detail.ck, download:'' do %>
            <i class="fas fa-file-download text-light" data-toggle="tooltip" title="Download" ></i> DOWNLOAD </span>
            <%end%></td>
        </tr>
 
        <tr>
          <td width="100%"><strong>BEE certificate:</strong></td>
-         <td><span class="badge bg-success text-light" ><%= link_to @company_detail.bee, download:'' do %>
+         <td><span class="badge bg-primary text-light" ><%= link_to @company_detail.bee, download:'' do %>
            <i class="fas fa-file-download text-light" data-toggle="tooltip" title="Download" > </i> DOWNLOAD </span>
            <%end%></td>
        </tr>

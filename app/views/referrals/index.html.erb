@@ -1,0 +1,47 @@
+
+
+
+<div class="row">
+  <div class="col-sm-6">
+    <h1>Referrals</h1>
+  </div>
+
+  <div class="col-sm-6 text-right">
+  <%= link_to new_referral_path, class: 'btn btn-primary' do %>
+    Add New Referral
+  <% end %>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+    
+
+            <th>Institution</th>
+            <th>Contact person</th>
+            <th>Position</th>
+            
+          <th></th>
+        
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @referrals.each do |referral| %>
+        <%= content_tag :tr, id: dom_id(referral), class: dom_class(referral) do %>
+          
+
+                      <td><%= referral.institution %></td>
+                      <td><%= referral.contact_person %></td>
+                      <td><%= referral.position %></td>
+          
+          
+            <td><%= link_to 'Show', referral %></td>
+          
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

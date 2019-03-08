@@ -4,12 +4,8 @@ one:
   institution: MyString
   contact_person: MyString
   position: MyString
-  contact_number: MyString
-  cvs: one
 
 two:
   institution: MyString
   contact_person: MyString
   position: MyString
-  contact_number: MyString
-  cvs: two

@@ -44,11 +44,11 @@
               <td><strong>ID/Passport:</strong></td>
               <td>  <%= @cv.id_passport%>
                 <%if @cv.identification_type == "ID" %>
-                  <small class="badge bg-success text-light"><i class="fas fa-user"></i> ID |
+                  <small class="badge bg-primary text-light"><i class="fas fa-user"></i> ID |
                      <small>South African Citizen</small>
                   </small>
                   <%else%>
-                  <small class="badge bg-success text-light"><i class="fas fa-user"></i> Passport |
+                  <small class="badge bg-primary text-light"><i class="fas fa-user"></i> Passport |
                      <small>Non South African Citizen</small>
                   </small>
 
@@ -57,7 +57,7 @@
             </tr>
             <tr>
               <td><strong>Tap Number:</strong></td>
-              <td><span class="badge bg-success text-light"><i class="fas fa-user-lock"></i> #TAP00<%=current_user.id%></span></td>
+              <td><span class="badge bg-primary text-light"><i class="fas fa-user-lock"></i> #TAP00<%=current_user.id%></span></td>
             </tr>
 
             <tr>
@@ -152,7 +152,7 @@
     NEXT - UPLOAD DOCUMENTS
     <%end%>
   <%else%>
-  <%=link_to new_document_path, class:'btn btn-success btn-sm', disabled: false do %>
+  <%=link_to new_document_path, class:'btn btn-primary btn-sm', disabled: false do %>
     NEXT - UPLOAD DOCUMENTS
   <%end%>
 <%end%>

@@ -1,17 +1,17 @@
 <div class="container">
   <div class="row ml-auto mr-auto text-muted">
-    <div class="col-lg-6 col-md-4 hide">
-    <div class="text-ajust">
+    <div class="col-lg-6 col-md-4">
+    <div class="jumbotron">
       <h1 class="">Dream Job</h1>
-      <p>One step closer with TAP placement portal.</p>
+      <p>One step closer with @work placement portal.</p>
       <div style="margin-left:18px">
-          <i class="text-success fas fa-check-circle"></i> Once off payment! <br>
-          <i class="text-success fas fa-check-circle"></i> Like it? Save and apply later! <br>
-          <i class="text-success fas fa-check-circle"></i> Don't just find: be found. <br>
-          <i class="text-success fas fa-check-circle"></i> Pick up where you left off from any device.
+          <i class="text-primary fas fa-check-circle"></i> Once off payment! <br>
+          <i class="text-primary fas fa-check-circle"></i> Like it? Save and apply later! <br>
+          <i class="text-primary fas fa-check-circle"></i> Don't just find: be found. <br>
+          <i class="text-primary fas fa-check-circle"></i> Pick up where you left off from any device.
       </div>
     </div>
-   </div>
+  </div>
     <div class="col-lg-6 col-md-6 shadow-sm p-3 mb-5 bg-light ">
       <h3>Create an account</h3>
        <hr>
@@ -37,9 +37,10 @@
         <div class="form-group">
           <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: 'Confirm Password' %>
         </div>
-
+        <h3>Payment</h3>
+          <hr>
         <div class="form-group">
-          <%= f.submit "Sign up", class: "btn btn-success btn-block btn-lg" %>
+          <%= f.submit "Sign up", class: "btn btn-primary btn-block btn-lg" %>
         </div>
       <% end %>
 

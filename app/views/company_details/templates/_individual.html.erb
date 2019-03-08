@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <div class="shadow-sm p-3 bg-success">
+  <div class="shadow-sm p-3 bg-primary">
       <div class="row">
         <div class="col-md-8 text-light">
           <h4><i class="far fa-list-alt"></i> COMPANY PROFILE</h4>
@@ -14,7 +14,7 @@
 
 <div class="card">
   <div class="card-body">
-    <h5 class="card-title text-success ">About us</h5>
+    <h5 class="card-title text-primary ">About us</h5>
     <p class="card-text text-muted text-justify"><%= @company_detail.description.capitalize %></p>
   </div>
 </div>
@@ -22,7 +22,7 @@
 <div class="row">
   <div class="col-lg-8">
     <div class="card">
-      <div class="card-header text-success">
+      <div class="card-header text-primary">
         Contacts
       </div>
       <div class="card-body text-muted">
@@ -31,7 +31,7 @@
       </div>
     </div> <br>
     <div class="card">
-      <div class="card-header text-success">
+      <div class="card-header text-primary">
         Location
       </div>
       <div class="card-body text-muted">
@@ -42,8 +42,8 @@
 
   <div class="col-lg-4">
     <div class="card">
-      <div class="card-header text-success">
-         Most Recent Jobs <span class="badge bg-success text-light"> <%=@jobs_count_profile%> </span>
+      <div class="card-header text-primary">
+         Most Recent Jobs <span class="badge bg-primary text-light"> <%=@jobs_count_profile%> </span>
       </div>
         <%@jobs.each do |job|%>
           <div class="shadow-sm p-3 bg-light">
@@ -58,8 +58,8 @@
               </li>
               <li class="list-inline-item">  <strong><%=link_to job.title.titlecase, job%> </strong><br>
                 <small>@<%=job.company_detail.company_name%> <br>
-                  <span class="badge bg-success text-light"><i class="fas fa-calendar-alt"></i> <%=time_ago_in_words(job.created_at) +" ago" %></span>
-                  <span class="badge bg-success text-light"><i class="fas fa-map-marker-alt"></i> <%=job.city %></span>
+                  <span class="badge bg-primary text-light"><i class="fas fa-calendar-alt"></i> <%=time_ago_in_words(job.created_at) +" ago" %></span>
+                  <span class="badge bg-primary text-light"><i class="fas fa-map-marker-alt"></i> <%=job.city %></span>
                 </small></li>
             </ul>
 

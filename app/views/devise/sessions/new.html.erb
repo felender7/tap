@@ -3,7 +3,7 @@
     <div class="col-lg-6 col-md-6 ml-auto mr-auto">
         <div class="card profile-card-2">
           <div class="card-header">
-          <div class="card-title lead"><h3 class="text-center">Log in</h3></div>
+          <div class="card-title lead text-muted"><h3 class="text-center">Log in</h3></div>
           </div>
            <div class="card-body pt-5">
              <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -25,7 +25,7 @@
                <% end -%>
 
                  <div class="form-group">
-                    <%= f.button "Sign in", class: "btn btn-success btn-block btn-lg", 'data-disable-with' => "<i class='fa fa-spinner fa-spin'></i> Signing in...".html_safe %>
+                    <%= f.button "Sign in", class: "btn btn-primary btn-block btn-lg", 'data-disable-with' => "<i class='fa fa-spinner fa-spin'></i> Signing in...".html_safe %>
                  </div>
              <% end %>
              <hr>

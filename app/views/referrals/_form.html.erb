@@ -1,0 +1,44 @@
+<%= form_with(model: referral, local: true) do |form| %>
+  <% if referral.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(referral.errors.count, "error") %> prohibited this referral from being saved:</h2>
+
+      <ul>
+      <% referral.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :institution %>
+    <%= form.text_field :institution, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :contact_person %>
+    <%= form.text_field :contact_person, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :position %>
+    <%= form.text_field :position, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <% if referral.persisted? %>
+      <div class="float-right">
+        <%= link_to 'Destroy', referral, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+
+    <%= form.submit class: 'btn btn-primary' %>
+
+    <% if referral.persisted? %>
+      <%= link_to "Cancel", referral, class: "btn btn-link" %>
+    <% else %>
+      <%= link_to "Cancel", referrals_path, class: "btn btn-link" %>
+    <% end %>
+  </div>
+<% end %>

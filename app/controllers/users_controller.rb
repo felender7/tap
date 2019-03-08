@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   end
 
+
   def show
     @user = User.friendly.find(params[:id])
     @reviews = Review.where(user_id: @user.id).paginate(:page => params[:page], :per_page => 4).order('created_at DESC')

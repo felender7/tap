@@ -1,6 +1,6 @@
 
 <% if current_user.profile_type == "Individual" %>
-<div class="shadow-sm p-3 mb-5 bg-success text-light">
+<div class="shadow-sm p-3 mb-5 bg-primary text-light">
   <h4>Steps</h4>
   <table class="table table-sm">
     <tbody>
@@ -13,7 +13,7 @@
         <%if current_user.cvs.exists? %>
           <td><i class="fas fa-check-circle"></i></td>
         <%else%>
-          <td><i class="text-warning fas fa-times-circle"></i></td>
+          <td><i class="text-danger fas fa-times-circle"></i></td>
         <%end%>
       </tr>
 
@@ -22,7 +22,7 @@
         <%if current_user.documents.exists? %>
           <td><i class="fas fa-check-circle"></i></td>
         <%else%>
-          <td><i class="text-warning fas fa-times-circle"></i></td>
+          <td><i class="text-danger fas fa-times-circle"></i></td>
         <%end%>
       </tr>
 
@@ -35,7 +35,7 @@
 </div>
 
 <% else current_user.profile_type == "Company" %>
-<div class="shadow-sm p-3 mb-5 bg-success text-light">
+<div class="shadow-sm p-3 mb-5 bg-primary text-light">
   <h4>Steps</h4>
   <table class="table table-sm">
     <tbody>
@@ -48,7 +48,7 @@
         <%if current_user.company_details.exists? %>
           <td><i class="fas fa-check-circle"></i></td>
         <%else%>
-          <td><i class="text-warning fas fa-times-circle"></i></td>
+          <td><i class="text-danger fas fa-times-circle"></i></td>
         <%end%>
       </tr>
 
@@ -57,7 +57,7 @@
         <%if current_user.jobs.exists? %>
           <td><i class="fas fa-check-circle"></i></td>
         <%else%>
-          <td><i class="text-warning fas fa-times-circle"></i></td>
+          <td><i class="text-danger fas fa-times-circle"></i></td>
         <%end%>
       </tr>
 
