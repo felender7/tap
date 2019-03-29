@@ -7,10 +7,15 @@ Rails.application.routes.draw do
   get 'service_provider', to: 'service_provider#index' ,   via: 'get'
   get '/service_provider/:id', to: 'service_provider#show' ,   via: 'get'
   get 'summary', to: 'summary#show'
-  get 'job_placement',to:'job_placement#index'
-  get 'verification', to:'verification#index'
-  get 'register_online', to: 'register_online#index'
-  get '/about', to: 'about#index'
+
+  resources :about do
+    collection do
+      get 'register_online', to: 'about#register_online'
+      get 'job_placement',to:'about#job_placement'
+      get 'verification', to:'about#verification'
+    end
+  end
+
   match '/users',   to: 'users#index',   via: 'get'
   match '/users/:id',     to: 'users#show',       via: 'get'
   resources :find_jobs do

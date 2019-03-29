@@ -7,11 +7,13 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/notices' %>
+    <%if user_signed_in?%>
     <div data-pjax-container class="mt-5" >
-  
         <%= yield %>
-
     </div>
+    <%else%>
+      <%= yield %>
+    <%end%>
      <%= render 'shared/footer' %>
 
   </body>

@@ -6,6 +6,8 @@ class Document < ApplicationRecord
   has_one_attached :file
   belongs_to :user , optional: true
 
+  WATERMARK_PATH = Rails.root.join('lib', 'assets', 'images', 'watermark.png')
+
   private
 
   def correct_document_mime_type

@@ -26,8 +26,9 @@
 
         <div class="form-group">
 
-          <%= form.submit class: 'btn btn-primary' %>
-
+          <%= form.button(type: "submit", class: "btn btn-primary" , data: {disable_with:"<i class='fa fa-spinner fa-spin'></i> Writing..." .html_safe }) do %>
+             <i class="far fa-edit"></i> WRITE REVIEW
+          <% end %>
           <% if review.persisted? %>
             <%= link_to "Cancel", user_path(@user), class: "btn btn-link" %>
           <% else %>

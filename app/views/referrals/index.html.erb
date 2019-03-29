@@ -31,14 +31,13 @@
                 <%= content_tag :tr, id: dom_id(referral), class: dom_class(referral) do %>
                 <% if current_user && referral.user == current_user %>
                 <tr class="active">
-                  <td width="100%">
+                  <td width="100%"">
                     <%= link_to referral do %><i class="far fa-building"></i> <%= referral.institution %> <br>
 
                   </td>
                    <%end%>
 
-                  <td><span class="badge bg-danger ">
-                    <span class="badge bg-danger"><%= link_to referral, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <td><span class="badge bg-danger"><%= link_to referral, method: :delete, data: { confirm: 'Are you sure?' } do %>
                        <i class="fas fa-trash-alt text-light" data-toggle="tooltip" title="Destroy"></i></span>
                       <%end%>
                     </td>
@@ -64,6 +63,4 @@
   </div>
   </div>
 </div>
-
-
 <%end%>

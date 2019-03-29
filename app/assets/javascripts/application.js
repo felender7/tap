@@ -22,6 +22,7 @@
 //= require simplemde
 //= require typeahead.bundle
 //= require jquery.raty
+//= require jquery-ui
 //=require jquery.pjax
 //= require_tree .
 

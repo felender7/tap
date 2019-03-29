@@ -11,6 +11,8 @@ $btn-success-color          :#fff !important;
 @import "navscroller";
 @import "simplemde";
 @import "typeahead";
+@import "jquery-ui";
+
 
 // Fixes bootstrap nav-brand container overlap
 @include media-breakpoint-down(xs) {

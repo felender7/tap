@@ -33,7 +33,7 @@
          </tbody>
             <tr>
               <td width="100%"><strong class="text-muted"><%= @document.title %></strong></td>
-              <td><%=link_to @document.file, download:'' do %>
+              <td><%=link_to @document.file, combine_options: { gravity: 'center', draw: 'image Over 0,0 0,0 "' + Document::WATERMARK_PATH.to_s + '"' } ,download:'' do %>
                 <span class="badge bg-primary text-light"><i class="fas fa-file-download"> </i> </span>
                <%end%>
               </td>
